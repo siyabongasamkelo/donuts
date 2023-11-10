@@ -109,17 +109,21 @@ export const RightDiv = styled.div`
       div {
         margin-left: 16%;
         position: absolute;
-        top: 70%;
+        top: 75%;
       }
       h1 {
         font-size: 32px;
         text-align: center;
+        letter-spacing: 7px;
+        line-height: 50px;
+        font-weight: 700;
+        margin-top: 50px;
       }
     }
     .flavours {
       margin-left: -25px;
       position: absolute;
-      top: 80%;
+      top: 85%;
       p {
         font-size: 10px;
       }
