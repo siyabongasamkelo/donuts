@@ -1,7 +1,7 @@
-"use client";
-
-import { Button, Navbar } from "flowbite-react";
+// "use client";
+import { Navbar, Button } from "flowbite-react";
 import donut from "../images/donut.png";
+// import { Button } from "./Button";
 
 const Header = () => {
   return (
@@ -13,11 +13,12 @@ const Header = () => {
           alt="Flowbite React Logo"
         />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          mabutho donut
+          donuts
         </span>
       </Navbar.Brand>
       <div className="flex md:order-2">
-        <Button>See All</Button>
+        <Button style={{ backgroundColor: "#e90064" }}>See All</Button>
+        {/* <Button>Sell All</Button> */}
         <Navbar.Toggle />
       </div>
       <Navbar.Collapse>
