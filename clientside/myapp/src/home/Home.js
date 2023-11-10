@@ -67,14 +67,18 @@ export const RightDiv = styled.div`
       button {
         background-color: #e90064;
       }
-      img {
-        position: absolute;
-      }
     }
     h1 {
       font-size: 64px;
       font-weight: 500;
       margin-top: 80px;
+    }
+    img {
+      position: absolute;
+      height: 120px;
+      width: 120px;
+      left: 75%;
+      margin-top: -30px;
     }
   }
   .flavours {
