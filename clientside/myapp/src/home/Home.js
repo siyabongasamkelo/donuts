@@ -21,11 +21,13 @@ export const HomePagestyled = styled.div`
 export const Contatiner = styled.div`
   width: 85%;
   height: 95%;
+  overflow-x: hidden;
 `;
 
 export const MainDiv = styled.div`
   width: 100%;
   height: 90%;
+  overflow-x: hidden;
 `;
 
 export const LeftDiv = styled.div`
@@ -45,7 +47,7 @@ export const LeftDiv = styled.div`
     img {
       height: 250px;
       width: 750px;
-      margin-top: 50px;
+      margin-top: -500px;
       margin-left: 7%;
     }
   }
@@ -103,8 +105,11 @@ export const RightDiv = styled.div`
     height: 50%;
     width: 100%;
     .text {
+      margin-left: 0;
       div {
         margin-left: 16%;
+        position: absolute;
+        top: 70%;
       }
       h1 {
         font-size: 32px;
@@ -112,13 +117,15 @@ export const RightDiv = styled.div`
       }
     }
     .flavours {
-      margin-left: 0;
+      margin-left: -25px;
+      position: absolute;
+      top: 80%;
       p {
         font-size: 10px;
       }
       div {
         height: 70%;
-        margin-left: 5px;
+        margin-left: 0px;
       }
     }
   }
@@ -169,7 +176,7 @@ export const Home = () => {
     <HomePagestyled className=" d-flex justify-content-center align-items-center">
       <Contatiner>
         <Header />
-        <MainDiv className=" d-flex flex-column flex-md-row">
+        <MainDiv className=" d-flex flex-column-reverse flex-md-row ">
           <LeftDiv className=" d-flex justify-content-center align-items-center">
             <img src={donut} alt="donut" />
           </LeftDiv>
