@@ -44,6 +44,7 @@ export const ItemCardStyled = styled.div`
   @media (max-width: 480px) {
     width: 40%;
     height: 220px;
+    margin-top: 5%;
     .container {
       width: 95%;
       height: 95%;

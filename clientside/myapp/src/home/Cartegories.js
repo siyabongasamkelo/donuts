@@ -8,6 +8,8 @@ import jelly from "../images/jelly.png";
 import boston from "../images/boston.png";
 import { ItemCard } from "../components/ItemCard";
 import { Sliders } from "react-bootstrap-icons";
+import { useState } from "react";
+import { CartModal } from "../components/CartModal";
 
 export const Cartstyled = styled.div`
   width: 100vw;
@@ -19,6 +21,9 @@ export const Container = styled.div`
   width: 85%;
   height: 95%;
   overflow-x: hidden;
+  @media (max-width: 480px) {
+    width: 90%;
+  }
 `;
 
 export const Topdiv = styled.div`
@@ -76,8 +81,20 @@ const Cart = ({ pic, type }) => {
 };
 
 export const Cartegories = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  // function onCloseModal() {
+  //   setOpenModal(false);
+  // }
+
   return (
     <Cartstyled className=" d-flex justify-content-center">
+      <CartModal
+        openModal={openModal}
+        onCloseModal={() => {
+          setOpenModal(!openModal);
+        }}
+      />
       <Container>
         <Topdiv>
           <h1>Cartegories</h1>
@@ -94,7 +111,11 @@ export const Cartegories = () => {
         </Carts>
 
         <MobileCart className=" mt-4 d-flex d-md-none">
-          <Sliders />
+          <Sliders
+            onClick={() => {
+              setOpenModal(!openModal);
+            }}
+          />
         </MobileCart>
 
         <Shop className=" d-flex flex-wrap">
