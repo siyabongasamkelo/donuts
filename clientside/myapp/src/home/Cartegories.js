@@ -7,10 +7,13 @@ import beignet from "../images/beignet.png";
 import jelly from "../images/jelly.png";
 import boston from "../images/boston.png";
 import { ItemCard } from "../components/ItemCard";
+import { Sliders } from "react-bootstrap-icons";
 
 export const Cartstyled = styled.div`
   width: 100vw;
   overflow-x: hidden;
+  @media (max-width: 480px) {
+  }
 `;
 export const Container = styled.div`
   width: 85%;
@@ -46,7 +49,17 @@ export const CartSstyled = styled.div`
 export const Shop = styled.div`
   height: 80vh;
   width: 100%;
+  @media (max-width: 480px) {
+    margin-top: 30px;
+    height: auto;
+  }
   /* background-color: red; */
+`;
+
+export const MobileCart = styled.div`
+  svg {
+    transform: scale(130%);
+  }
 `;
 
 const Cart = ({ pic, type }) => {
@@ -69,7 +82,7 @@ export const Cartegories = () => {
         <Topdiv>
           <h1>Cartegories</h1>
         </Topdiv>
-        <Carts className=" mt-4 d-flex justify-content-around">
+        <Carts className=" d-none d-md-flex mt-4 d-flex justify-content-around">
           <Cart pic={yeist} type="all" />
           <Cart pic={cake} type="cake" />
           <Cart pic={potato} type="potato" />
@@ -79,6 +92,11 @@ export const Cartegories = () => {
           <Cart pic={beignet} type="beignet" />
           <Cart pic={boston} type="boston cream donut" />
         </Carts>
+
+        <MobileCart className=" mt-4 d-flex d-md-none">
+          <Sliders />
+        </MobileCart>
+
         <Shop className=" d-flex flex-wrap">
           <ItemCard />
           <ItemCard />

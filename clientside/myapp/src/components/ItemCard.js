@@ -41,6 +41,33 @@ export const ItemCardStyled = styled.div`
       }
     }
   }
+  @media (max-width: 480px) {
+    width: 40%;
+    height: 220px;
+    .container {
+      width: 95%;
+      height: 95%;
+      .text {
+        margin-top: -20px;
+        p {
+          font-size: 11px;
+        }
+        div {
+          svg {
+            transform: scale(70%);
+          }
+          p {
+            font-size: 11px;
+          }
+        }
+      }
+      .text2 {
+        h2 {
+          font-size: 13px;
+        }
+      }
+    }
+  }
 `;
 
 export const Button = styled.button`
@@ -51,6 +78,10 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   background-color: #610c9f;
+  @media (max-width: 480px) {
+    height: 25px;
+    width: 30px;
+  }
 `;
 
 export const ItemCard = () => {
