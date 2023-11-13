@@ -10,13 +10,12 @@ import choc2 from "../images/choc2.jpg";
 import choc3 from "../images/choc3.jpg";
 import banana from "../images/banana.jpg";
 import { Button } from "flowbite-react";
+// import { motion } from "framer-motion";
 
 export const HomePagestyled = styled.div`
   height: 100vh;
   width: 100vw;
   overflow-x: hidden;
-  /* background-color: red; */
-  /* background-color: rgba(0, 0, 0, 0.9, 8); */
 `;
 export const Contatiner = styled.div`
   width: 85%;
@@ -177,11 +176,12 @@ const TheCard = ({ pic }) => {
 
 export const Home = () => {
   return (
-    <HomePagestyled className=" d-flex justify-content-center align-items-center">
+    <HomePagestyled className=" d-flex justify-content-center align-items-center overflow-x-hidden">
       <Contatiner>
         <Header />
         <MainDiv className=" d-flex flex-column-reverse flex-md-row ">
           <LeftDiv className=" d-flex justify-content-center align-items-center">
+            {/* <img src={donut} alt="donut" /> */}
             <img src={donut} alt="donut" />
           </LeftDiv>
           <RightDiv>

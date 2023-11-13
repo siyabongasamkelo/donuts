@@ -4,8 +4,8 @@ import { Home } from "../home/Home";
 
 export const HomePage = () => {
   return (
-    <>
+    <div className=" overflow-x-hidden">
       <Home /> <Cartegories />
-    </>
+    </div>
   );
 };
