@@ -15,6 +15,7 @@ export const Cartstyled = styled.div`
   width: 100vw;
   overflow-x: hidden;
   @media (max-width: 480px) {
+    margin-bottom: 50px;
   }
 `;
 export const Container = styled.div`
