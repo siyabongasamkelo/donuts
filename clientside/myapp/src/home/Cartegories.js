@@ -34,6 +34,9 @@ export const Topdiv = styled.div`
     color: #610c9f;
     font-weight: 700;
   }
+  @media (max-width: 480px) {
+    margin-top: 30px;
+  }
 `;
 export const Carts = styled.div`
   width: 90%;

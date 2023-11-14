@@ -9,7 +9,7 @@ export const ReviewStyled = styled.div`
   border-radius: 10px;
   cursor: pointer;
   @media (max-width: 480px) {
-    margin-top: 10px;
+    margin-top: 30px;
     width: 100%;
   }
 `;

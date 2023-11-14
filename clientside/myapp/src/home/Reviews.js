@@ -23,6 +23,9 @@ export const Container = styled.div`
     }
   }
   @media (max-width: 480px) {
+    .header {
+      margin-top: 30px;
+    }
     .reviews2 {
       margin-bottom: 30px;
     }
@@ -37,12 +40,12 @@ export const Reviews = () => {
           <h1>Reviews</h1>
           <p>This is what our clients say about us</p>
         </div>
-        <div className="reviews mt-5 d-flex flex-column flex-md-row justify-content-md-between">
+        <div className="reviews mt-4 d-flex flex-column flex-md-row justify-content-md-between">
           <ReviewCard />
           <ReviewCard />
           <ReviewCard />
         </div>
-        <div className="reviews2 mt-5 d-flex flex-column flex-md-row justify-content-md-between">
+        <div className="reviews2 mt-2 d-flex flex-column flex-md-row justify-content-md-between">
           <ReviewCard />
           <ReviewCard />
           <ReviewCard />
