@@ -166,13 +166,7 @@ const Header = () => {
       <MobileHeader
         className="d-md-none d-lg-none"
         as={motion.div}
-        // initial={{
-        //   // x: 400
-        //   width: 100,
-        //   x: 0,
-        // }}
         animate={{
-          // x: closeIt ? 400 : -30
           x: -35,
           width: closeIt ? 0 : 400,
         }}
