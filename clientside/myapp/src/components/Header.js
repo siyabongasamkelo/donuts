@@ -44,6 +44,8 @@ export const HeaderStyled = styled.header`
     }
   }
   @media (max-width: 480px) {
+    margin-top: -25px;
+    /* background-color: red; */
     .icons {
       margin-left: -60px;
     }
