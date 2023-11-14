@@ -1,5 +1,9 @@
 import styled from "styled-components";
 import potato from "../images/potato.png";
+import donut from "../images/donut.png";
+import sprinkles from "../images/sprinkles.png";
+import s1 from "../images/s1.png";
+import s2 from "../images/s2.png";
 import { StarFill, BagFill } from "react-bootstrap-icons";
 
 export const ItemCardStyled = styled.div`
@@ -8,6 +12,7 @@ export const ItemCardStyled = styled.div`
   margin-left: 5.3%;
   margin-top: 2%;
   background-color: rgba(233, 87, 147, 0.4);
+  background-color: #9fbb73;
   border-radius: 10px;
   .container {
     height: 90%;
@@ -17,7 +22,9 @@ export const ItemCardStyled = styled.div`
     .pic {
       height: 80%;
       img {
-        height: 60%;
+        height: 140px;
+        width: 300px;
+        transform: scale(180%);
         margin-top: 10%;
       }
     }
@@ -48,6 +55,12 @@ export const ItemCardStyled = styled.div`
     .container {
       width: 95%;
       height: 95%;
+      .pic {
+        img {
+          height: 100px;
+          transform: scale(150%);
+        }
+      }
       .text {
         margin-top: -20px;
         p {
@@ -79,6 +92,7 @@ export const Button = styled.button`
   justify-content: center;
   align-items: center;
   background-color: #610c9f;
+  background-color: #f3b664;
   @media (max-width: 480px) {
     height: 25px;
     width: 30px;
@@ -89,8 +103,8 @@ export const ItemCard = () => {
   return (
     <ItemCardStyled>
       <div className="container">
-        <div className="pic d-flex justify-content-center">
-          <img src={potato} alt="donut" />
+        <div className="pic d-flex ">
+          <img src={s1} alt="donut" />
         </div>
         <div className="text d-flex justify-content-between">
           <p>Potato donut</p>

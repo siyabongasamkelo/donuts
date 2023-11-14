@@ -50,6 +50,12 @@ export const HeaderStyled = styled.header`
       margin-left: -60px;
     }
   }
+  /* @media only screen and (min-width: 600px) {
+    margin-top: -25px;
+    .icons {
+      margin-left: -60px;
+    }
+  } */
 `;
 export const NavStyled = styled.nav`
   a {
@@ -64,13 +70,15 @@ export const NavStyled = styled.nav`
 
 export const MobileHeader = styled.div`
   height: 100vh;
-  width: 100vw;
+  /* width: 100vw;  */
   background-color: white;
   position: absolute;
   z-index: 1;
   top: 0%;
   border-radius: 10px 0 0 10px;
   overflow-x: hidden;
+  /* width: 1px; */
+  /* display: ${(props) => props.dis}; */
   .logo2 {
     height: 20%;
     h3 {
@@ -103,16 +111,26 @@ export const MobileHeader = styled.div`
   .sprinkle2 {
     height: 100px;
   }
+  @media (max-width: 480px) {
+  }
 `;
 
 const Header = () => {
   const [closeIt, setCloseIt] = useState(true);
+  const [display, setDisplay] = useState("block");
+
+  // if (closeIt) {
+  //   setDisplay("none");
+  // } else {
+  //   setDisplay("block");
+  // }
+
   return (
     <HeaderStyled className=" d-flex justify-content-between align-items-center">
       <div className="logo">
         <img src={donut} alt="donut logo" />
       </div>
-      <NavStyled className=" d-none d-md-block">
+      <NavStyled className=" d-none d-lg-block">
         <ul className=" d-flex">
           <li>
             <Link to="123">About</Link>
@@ -132,9 +150,14 @@ const Header = () => {
         <Person />
         <Bag />
       </div>
-      <div className="menu d-block d-md-none d-lg-none">
+      <div className="menu d-block d-lg-none">
         <List
           onClick={() => {
+            if (closeIt) {
+              setDisplay("none");
+            } else {
+              setDisplay("block");
+            }
             setCloseIt(false);
           }}
         />
@@ -143,9 +166,18 @@ const Header = () => {
       <MobileHeader
         className="d-md-none d-lg-none"
         as={motion.div}
-        initial={{ x: 400 }}
-        animate={{ x: closeIt ? 400 : -30 }}
+        // initial={{
+        //   // x: 400
+        //   width: 100,
+        //   x: 0,
+        // }}
+        animate={{
+          // x: closeIt ? 400 : -30
+          x: -35,
+          width: closeIt ? 0 : 400,
+        }}
         transition={{ duration: 0.5 }}
+        dis={display}
       >
         <div className="close d-flex justify-content-end">
           <X
@@ -163,7 +195,7 @@ const Header = () => {
           <ul>
             <motion.li
               animate={{
-                x: closeIt ? 100 : 0,
+                x: closeIt ? -100 : 0,
               }}
               transition={{
                 duration: 0.5,
@@ -173,7 +205,7 @@ const Header = () => {
             </motion.li>
             <motion.li
               animate={{
-                x: closeIt ? 100 : 0,
+                x: closeIt ? -100 : 0,
               }}
               transition={{
                 duration: 0.5,
@@ -183,7 +215,7 @@ const Header = () => {
             </motion.li>
             <motion.li
               animate={{
-                x: closeIt ? 100 : 0,
+                x: closeIt ? -100 : 0,
               }}
               transition={{
                 duration: 0.5,
@@ -193,7 +225,7 @@ const Header = () => {
             </motion.li>
             <motion.li
               animate={{
-                x: closeIt ? 100 : 0,
+                x: closeIt ? -100 : 0,
               }}
               transition={{
                 duration: 0.8,
@@ -204,7 +236,7 @@ const Header = () => {
             <motion.li
               className=" d-flex justify-content-center align-items-center "
               animate={{
-                x: closeIt ? 100 : 0,
+                x: closeIt ? -100 : 0,
               }}
               transition={{
                 duration: 0.8,
@@ -215,7 +247,7 @@ const Header = () => {
             <motion.li
               className=" d-flex justify-content-center align-items-center "
               animate={{
-                x: closeIt ? 100 : 0,
+                x: closeIt ? -100 : 0,
               }}
               transition={{
                 duration: 0.8,
@@ -226,7 +258,7 @@ const Header = () => {
             <motion.li
               className=" d-flex justify-content-center align-items-center "
               animate={{
-                x: closeIt ? 100 : 0,
+                x: closeIt ? -100 : 0,
               }}
               transition={{
                 duration: 0.8,

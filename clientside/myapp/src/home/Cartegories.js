@@ -83,10 +83,6 @@ const Cart = ({ pic, type }) => {
 export const Cartegories = () => {
   const [openModal, setOpenModal] = useState(false);
 
-  // function onCloseModal() {
-  //   setOpenModal(false);
-  // }
-
   return (
     <Cartstyled className=" d-flex justify-content-center">
       <CartModal

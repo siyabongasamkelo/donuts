@@ -69,6 +69,17 @@ export const LeftDiv = styled.div`
       top: 65%;
     }
   }
+  @media only screen and (min-width: 600px) and (max-width: 767px) {
+    img {
+      transform: scale(600%);
+      margin-top: -900%;
+      margin-left: 70px;
+    }
+    .icons {
+      position: absolute;
+      top: 65%;
+    }
+  }
 `;
 
 export const Middle = styled.div`
@@ -122,7 +133,7 @@ export const RightDiv = styled.div`
   }
   @media (max-width: 480px) {
     img {
-      top: 33%;
+      top: 27%;
       height: 80px;
       right: 3%;
     }
