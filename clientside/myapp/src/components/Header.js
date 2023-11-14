@@ -14,10 +14,12 @@ import {
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import sprinkles from "../images/sprinkles.png";
+import sprinkles2 from "../images/sprinkles2.png";
 
 export const HeaderStyled = styled.header`
   width: 100%;
-  overflow-x: hidden;
+  margin-top: 30px;
   .logo {
     img {
       height: 60px;
@@ -60,12 +62,11 @@ export const NavStyled = styled.nav`
 
 export const MobileHeader = styled.div`
   height: 100vh;
-  width: 98vw;
+  width: 100vw;
   background-color: white;
   position: absolute;
   z-index: 1;
   top: 0%;
-  right: -5%;
   border-radius: 10px 0 0 10px;
   overflow-x: hidden;
   .logo2 {
@@ -73,11 +74,11 @@ export const MobileHeader = styled.div`
     h3 {
       font-weight: 800;
       font-size: 22px;
-      margin-top: 7%;
       letter-spacing: 8px;
     }
     img {
       height: 70%;
+      margin-top: 5%;
     }
   }
   .links {
@@ -92,6 +93,13 @@ export const MobileHeader = styled.div`
         }
       }
     }
+  }
+  .sprinkle {
+    height: 50px;
+    margin-left: 70%;
+  }
+  .sprinkle2 {
+    height: 100px;
   }
 `;
 
@@ -134,7 +142,7 @@ const Header = () => {
         className="d-md-none d-lg-none"
         as={motion.div}
         initial={{ x: 400 }}
-        animate={{ x: closeIt ? 400 : 0 }}
+        animate={{ x: closeIt ? 400 : -30 }}
         transition={{ duration: 0.5 }}
       >
         <div className="close d-flex justify-content-end">
@@ -230,6 +238,8 @@ const Header = () => {
             </motion.li>
           </ul>
         </div>
+        <img className="sprinkle" src={sprinkles} alt="sprinkles" />
+        <img className="sprinkle2" src={sprinkles2} alt="sprinkles" />
       </MobileHeader>
     </HeaderStyled>
   );
