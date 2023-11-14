@@ -1,9 +1,5 @@
 import styled from "styled-components";
-import potato from "../images/potato.png";
-import donut from "../images/donut.png";
-import sprinkles from "../images/sprinkles.png";
 import s1 from "../images/s1.png";
-import s2 from "../images/s2.png";
 import { StarFill, BagFill } from "react-bootstrap-icons";
 
 export const ItemCardStyled = styled.div`
