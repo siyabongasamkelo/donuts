@@ -18,28 +18,45 @@ import sprinkles from "../images/sprinkles.png";
 import sprinkles2 from "../images/sprinkles2.png";
 
 export const HeaderStyled = styled.header`
-  @media only screen and (max-width: 600px) {
-    margin-top: 1rem;
-    .logo {
-      img {
-        height: 3rem;
-      }
+  width: 100%;
+  margin-top: 30px;
+  .logo {
+    img {
+      height: 60px;
+      cursor: pointer;
     }
-    .icons {
-      margin-right: 20px;
-      svg {
-        transform: scale(160%);
-        margin-left: 20px;
-      }
-    }
-    .menu {
-      svg {
-        transform: scale(180%);
+  }
+  .icons {
+    margin-right: 10px;
+    svg {
+      transform: scale(180%);
+      margin-left: 30px;
+      cursor: pointer;
+      transition: 0.5s ease-in-out;
+      &:hover {
+        fill: #e90064;
       }
     }
   }
+  .menu {
+    svg {
+      transform: scale(200%);
+    }
+  }
+  @media (max-width: 480px) {
+    margin-top: -25px;
+    /* background-color: red; */
+    .icons {
+      margin-left: -60px;
+    }
+  }
+  /* @media only screen and (min-width: 600px) {
+    margin-top: -25px;
+    .icons {
+      margin-left: -60px;
+    }
+  } */
 `;
-
 export const NavStyled = styled.nav`
   a {
     padding-left: 30px;
@@ -101,6 +118,12 @@ export const MobileHeader = styled.div`
 const Header = () => {
   const [closeIt, setCloseIt] = useState(true);
   const [display, setDisplay] = useState("block");
+
+  // if (closeIt) {
+  //   setDisplay("none");
+  // } else {
+  //   setDisplay("block");
+  // }
 
   return (
     <HeaderStyled className=" d-flex justify-content-between align-items-center">

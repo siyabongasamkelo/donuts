@@ -8,18 +8,15 @@ import {
   Twitter,
   Whatsapp,
 } from "react-bootstrap-icons";
-import donut from "../images/donut.png";
 import sprinkles from "../images/sprinkles.png";
 import sprinkles2 from "../images/sprinkles2.png";
 // import { motion } from "framer-motion";
 
-export const HomePagestyled = styled.div`
-  /* height: auto; */
+export const LoginPagestyled = styled.div`
   height: 100vh;
   width: 100vw;
   @media (max-width: 480px) {
     background-color: #ec8f5e;
-    height: auto;
   }
 `;
 export const Contatiner = styled.div`
@@ -27,12 +24,8 @@ export const Contatiner = styled.div`
   height: 90%;
   border-radius: 20px;
   background-color: #ec8f5e;
-  /* @media (max-width: 480px) {
+  @media (max-width: 480px) {
     width: 90%;
-  } */
-  @media only screen and (max-width: 600px) {
-    width: 90%;
-    overflow-x: visible;
   }
 `;
 
@@ -47,121 +40,89 @@ export const HeroDiv = styled.div`
 `;
 
 export const LeftDiv = styled.div`
-  @media only screen and (max-width: 600px) {
-    height: auto;
-    width: 5%;
-    .icons {
-      position: absolute;
-      top: 34rem;
-      svg {
-        transform: scale(150%);
-        margin-top: 20px;
-        cursor: pointer;
-        transition: 0.5s ease-in-out;
-        &:hover {
-          fill: #ec8f5e;
-        }
+  height: 100%;
+  width: 5%;
+  img {
+    margin-top: 60px;
+  }
+  .icons {
+    margin-top: -20px;
+    svg {
+      transform: scale(150%);
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.5s ease-in-out;
+      &:hover {
+        fill: #ec8f5e;
       }
     }
+  }
+  @media (max-width: 480px) {
     img {
       transform: scale(600%);
-      margin-left: 5rem;
-      margin-top: -21rem;
+      margin-top: -1800%;
+      margin-left: 70px;
+    }
+    .icons {
+      position: absolute;
+      top: 65%;
+    }
+  }
+  @media only screen and (min-width: 600px) and (max-width: 767px) {
+    img {
+      transform: scale(600%);
+      margin-top: -900%;
+      margin-left: 70px;
+    }
+    .icons {
+      position: absolute;
+      top: 65%;
     }
   }
 `;
 
 export const Middle = styled.div`
-  @media only screen and (max-width: 600px) {
-    width: 90%;
-    overflow-x: visible;
-    .text {
-      margin-top: 5rem;
-      h1 {
-        font-size: 2rem;
-        text-align: center;
-        letter-spacing: 1rem;
-        font-weight: 700;
-      }
+  width: 90%;
+  height: 100%;
+  .text {
+    h1 {
+      font-size: 62px;
+      letter-spacing: 30px;
+      text-align: center;
+      margin-top: 3%;
     }
-    .donut {
-      margin-top: 4rem;
-      img {
-        height: 20rem;
-        aspect-ratio: 1 /1;
-      }
+  }
+  .donut {
+    img {
+      height: 500px;
     }
-    .action {
-      margin-top: 5rem;
-      margin-bottom: 5rem;
-    }
+  }
+  .action {
+    margin-top: 50px;
   }
 
-  @media only screen and (min-width: 768px) {
-    width: 90%;
-    height: 100%;
+  @media (max-width: 480px) {
     .text {
+      margin-top: 20%;
       h1 {
-        font-size: 42px;
-        letter-spacing: 30px;
-        text-align: center;
-        margin-top: 15%;
+        font-size: 26px;
+        letter-spacing: 20px;
       }
     }
     .donut {
       img {
-        height: 350px;
-        margin-top: 15%;
+        height: 250px;
+        margin-top: 25%;
       }
     }
     .action {
-      margin-top: 15%;
-    }
-  }
-  @media only screen and (min-width: 992px) {
-    width: 90%;
-    height: 100%;
-    .text {
-      h1 {
-        font-size: 62px;
-        letter-spacing: 30px;
-        text-align: center;
-        margin-top: 3%;
-      }
-    }
-    .donut {
-      img {
-        height: 500px;
-      }
-    }
-    .action {
-      margin-top: 50px;
-    }
-  }
-  @media only screen and (min-width: 1200px) {
-    width: 90%;
-    height: 100%;
-    .text {
-      h1 {
-        font-size: 62px;
-        letter-spacing: 30px;
-        text-align: center;
-        margin-top: 3%;
-      }
-    }
-    .donut {
-      img {
-        height: 500px;
-      }
-    }
-    .action {
-      margin-top: 50px;
+      margin-top: 40%;
     }
   }
 `;
 
 export const RightDiv = styled.div`
-  /* height: 100%;
+  height: 100%;
   width: 5%;
   img {
     position: absolute;
@@ -174,17 +135,6 @@ export const RightDiv = styled.div`
       top: 27%;
       height: 80px;
       right: 3%;
-    }
-  } */
-
-  @media only screen and (max-width: 600px) {
-    height: 100%;
-    width: 5%;
-    img {
-      position: absolute;
-      height: 5rem;
-      right: 1rem;
-      top: 13rem;
     }
   }
 `;
@@ -226,9 +176,16 @@ export const MyButton = styled.button`
   }
 `;
 
-export const Home = () => {
+export const LoginForm = styled.div`
+  height: 550px;
+  width: 400px;
+
+  background-color: red;
+`;
+
+export const Cart = () => {
   return (
-    <HomePagestyled className=" d-flex justify-content-center align-items-center overflow-x-hidden">
+    <LoginPagestyled className=" d-flex justify-content-center align-items-center overflow-x-hidden">
       <Contatiner className=" d-flex justify-content-center align-items-center overflow-x-hidden">
         <MainDiv>
           <Header />
@@ -245,13 +202,10 @@ export const Home = () => {
             </LeftDiv>
             <Middle className=" d-flex flex-column  align-items-center  ">
               <div className="text">
-                <h1>MHLATHUZE DONUTS</h1>
+                <h1>Cart</h1>
               </div>
-              <div className="donut">
-                <img src={donut} alt="donut" />
-              </div>
-              <div className="action">
-                <MyButton>Buy</MyButton>
+              <div className="login-form">
+                <LoginForm></LoginForm>
               </div>
             </Middle>
             <RightDiv>
@@ -260,6 +214,6 @@ export const Home = () => {
           </HeroDiv>
         </MainDiv>
       </Contatiner>
-    </HomePagestyled>
+    </LoginPagestyled>
   );
 };

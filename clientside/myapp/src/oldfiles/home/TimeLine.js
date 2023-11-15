@@ -4,7 +4,7 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 import { BarChart, Instagram, Shop } from "react-bootstrap-icons";
 
 export const TimeLineStyled = styled.div`
-  /* height: 100vh; */
+  height: 100vh;
   width: 100vw;
   /* background-color: #ec8f5e; */
   @media (max-width: 480px) {
