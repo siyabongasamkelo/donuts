@@ -38,6 +38,26 @@ export const HeaderStyled = styled.header`
       }
     }
   }
+  @media only screen and (min-width: 768px) {
+    margin-top: 1rem;
+    .logo {
+      img {
+        height: 3rem;
+      }
+    }
+    .icons {
+      margin-right: 20px;
+      svg {
+        transform: scale(160%);
+        margin-left: 20px;
+      }
+    }
+    .menu {
+      svg {
+        transform: scale(180%);
+      }
+    }
+  }
 `;
 
 export const NavStyled = styled.nav`

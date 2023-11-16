@@ -11,11 +11,10 @@ import {
 import donut from "../images/donut.png";
 import sprinkles from "../images/sprinkles.png";
 import sprinkles2 from "../images/sprinkles2.png";
+import sprinkles3 from "../images/sprinkles3.png";
 // import { motion } from "framer-motion";
 
 export const HomePagestyled = styled.div`
-  /* height: auto; */
-  height: 100vh;
   width: 100vw;
   @media (max-width: 480px) {
     background-color: #ec8f5e;
@@ -34,6 +33,11 @@ export const Contatiner = styled.div`
     width: 90%;
     overflow-x: visible;
   }
+
+  @media only screen and (min-width: 768px) {
+    margin-top: 2rem;
+    overflow-x: visible;
+  }
 `;
 
 export const MainDiv = styled.div`
@@ -47,6 +51,16 @@ export const HeroDiv = styled.div`
 `;
 
 export const LeftDiv = styled.div`
+  width: 5%;
+  height: 100%;
+  img {
+    filter: drop-shadow(30px 5px 5px #666666);
+  }
+  .icons {
+    svg {
+      filter: drop-shadow(10px 2px 2px #666666);
+    }
+  }
   @media only screen and (max-width: 600px) {
     height: auto;
     width: 5%;
@@ -66,12 +80,59 @@ export const LeftDiv = styled.div`
     img {
       transform: scale(600%);
       margin-left: 5rem;
-      margin-top: -21rem;
+      margin-top: -18rem;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    height: auto;
+    width: 5%;
+    .icons {
+      position: absolute;
+      top: 34rem;
+      svg {
+        transform: scale(150%);
+        margin-top: 20px;
+        cursor: pointer;
+        transition: 0.5s ease-in-out;
+        &:hover {
+          fill: #ec8f5e;
+        }
+      }
+    }
+    img {
+      transform: scale(400%);
+      margin-left: 8rem;
+      margin-top: -18rem;
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    .icons {
+      margin-top: 7rem;
+    }
+    img {
+      margin-top: -18rem;
+      margin-left: 14rem;
     }
   }
 `;
 
 export const Middle = styled.div`
+  .donut {
+    img {
+      filter: drop-shadow(30px 5px 5px #666666);
+    }
+  }
+  .text {
+    h1 {
+      filter: drop-shadow(10px 2px 2px #666666);
+    }
+  }
+  .action {
+    button {
+      filter: drop-shadow(30px 5px 5px #666666);
+    }
+  }
   @media only screen and (max-width: 600px) {
     width: 90%;
     overflow-x: visible;
@@ -85,10 +146,9 @@ export const Middle = styled.div`
       }
     }
     .donut {
-      margin-top: 4rem;
+      margin-top: 7.5rem;
       img {
-        height: 20rem;
-        aspect-ratio: 1 /1;
+        height: 16rem;
       }
     }
     .action {
@@ -99,59 +159,67 @@ export const Middle = styled.div`
 
   @media only screen and (min-width: 768px) {
     width: 90%;
-    height: 100%;
+    height: 90%;
     .text {
       h1 {
-        font-size: 42px;
-        letter-spacing: 30px;
+        font-size: 3rem;
+        letter-spacing: 2rem;
         text-align: center;
-        margin-top: 15%;
+        margin-top: 5rem;
+        font-weight: 500;
       }
     }
     .donut {
       img {
         height: 350px;
-        margin-top: 15%;
+        margin-top: 5rem;
       }
     }
     .action {
-      margin-top: 15%;
+      margin-top: 5rem;
+      margin-bottom: 3rem;
     }
   }
   @media only screen and (min-width: 992px) {
     width: 90%;
-    height: 100%;
+    height: 90%;
     .text {
       h1 {
-        font-size: 62px;
-        letter-spacing: 30px;
+        font-size: 3rem;
+        letter-spacing: 2rem;
         text-align: center;
-        margin-top: 3%;
+        margin-top: 5rem;
+        font-weight: 700;
       }
     }
     .donut {
       img {
-        height: 500px;
+        height: 350px;
+        margin-top: 5rem;
       }
     }
     .action {
-      margin-top: 50px;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
     }
   }
+
   @media only screen and (min-width: 1200px) {
     width: 90%;
     height: 100%;
     .text {
       h1 {
-        font-size: 62px;
-        letter-spacing: 30px;
+        font-size: 4rem;
+        letter-spacing: 1.5rem;
         text-align: center;
-        margin-top: 3%;
+        margin-top: 5rem;
+        font-size: 600;
       }
     }
     .donut {
       img {
-        height: 500px;
+        height: 28rem;
+        margin-top: 3rem;
       }
     }
     .action {
@@ -161,22 +229,11 @@ export const Middle = styled.div`
 `;
 
 export const RightDiv = styled.div`
-  /* height: 100%;
   width: 5%;
+  height: 100%;
   img {
-    position: absolute;
-    height: 120px;
-    right: 5%;
-    top: 20%;
+    filter: drop-shadow(30px 5px 5px #666666);
   }
-  @media (max-width: 480px) {
-    img {
-      top: 27%;
-      height: 80px;
-      right: 3%;
-    }
-  } */
-
   @media only screen and (max-width: 600px) {
     height: 100%;
     width: 5%;
@@ -184,7 +241,24 @@ export const RightDiv = styled.div`
       position: absolute;
       height: 5rem;
       right: 1rem;
-      top: 13rem;
+      top: 14rem;
+    }
+  }
+  @media only screen and (min-width: 768px) {
+    height: 100%;
+    width: 5%;
+    img {
+      position: absolute;
+      height: 7rem;
+      right: 4rem;
+      top: 15rem;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .sprinkles {
+      height: 15rem;
+      position: absolute;
+      top: 40rem;
     }
   }
 `;
@@ -256,6 +330,11 @@ export const Home = () => {
             </Middle>
             <RightDiv>
               <img src={sprinkles} alt="sprinkles" />
+              <img
+                className="sprinkles d-none d-md-block"
+                src={sprinkles3}
+                alt="sprinkles"
+              />
             </RightDiv>
           </HeroDiv>
         </MainDiv>
