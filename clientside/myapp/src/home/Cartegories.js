@@ -14,20 +14,15 @@ import { CartModal } from "../components/CartModal";
 export const Cartstyled = styled.div`
   width: 100vw;
   overflow-x: hidden;
-  @media (max-width: 480px) {
-    margin-bottom: 50px;
-  }
+  margin-top: 2%;
 `;
 export const Container = styled.div`
   width: 85%;
   height: 95%;
   overflow-x: hidden;
-  /* @media (max-width: 480px) {
-    width: 90%;
-  } */
+
   @media only screen and (max-width: 600px) {
     width: 90%;
-    /* margin-left: 5%; */
   }
 `;
 
@@ -35,12 +30,14 @@ export const Topdiv = styled.div`
   h1 {
     text-align: center;
     font-size: 38px;
-    /* color: #610c9f; */
-    /* font-weight: 700; */
+    @media only screen and (max-width: 600px) {
+      margin-top: 10%;
+    }
+    @media only screen and (min-width: 768px) {
+      margin-top: 5%;
+    }
   }
-  /* @media (max-width: 480px) {
-    margin-top: 30px;
-  } */
+  margin-bottom: 3%;
   @media only screen and (max-width: 600px) {
     width: 90%;
   }
@@ -48,6 +45,8 @@ export const Topdiv = styled.div`
 export const Carts = styled.div`
   width: 90%;
   margin-left: 5%;
+  @media only screen and (min-width: 1200px) {
+  }
 `;
 
 export const CartSstyled = styled.div`
@@ -66,10 +65,6 @@ export const Shop = styled.div`
   height: 80vh;
   width: 100%;
   height: auto;
-  /* @media (max-width: 480px) {
-    margin-top: 30px;
-    height: auto;
-  } */
   @media only screen and (max-width: 600px) {
     height: auto;
     margin-top: 30px;
@@ -79,6 +74,11 @@ export const Shop = styled.div`
     height: auto;
   }
   @media only screen and (min-width: 992px) {
+    height: auto;
+  }
+  @media only screen and (min-width: 1200px) {
+    height: auto;
+    margin-top: 3%;
   }
 `;
 
@@ -135,7 +135,7 @@ export const Cartegories = () => {
           />
         </MobileCart>
 
-        <Shop className=" d-flex flex-wrap justify-content-center">
+        <Shop className=" d-flex flex-wrap ">
           <ItemCard />
           <ItemCard />
           <ItemCard />

@@ -4,10 +4,13 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 import { BarChart, Instagram, Shop } from "react-bootstrap-icons";
 
 export const TimeLineStyled = styled.div`
-  /* height: 100vh; */
-  width: 100vw;
-  /* background-color: #ec8f5e; */
+  /* width: 100vw;
   @media (max-width: 480px) {
+    margin-bottom: 50px;
+  } */
+
+  @media only screen and (max-width: 600px) {
+    width: 100vw;
     margin-bottom: 50px;
   }
 `;
@@ -27,10 +30,19 @@ export const Contaner = styled.div`
 `;
 
 export const TimelineDIv = styled.div`
-  width: 25%;
-  margin-top: 50px;
-  @media (max-width: 480px) {
+  @media only screen and (max-width: 600px) {
+    margin-top: 50px;
     width: 100%;
+  }
+  @media only screen and (min-width: 768px) {
+    margin-top: 50px;
+    width: 70%;
+  }
+  @media only screen and (min-width: 992px) {
+    width: 55%;
+  }
+  @media only screen and (min-width: 1200px) {
+    width: 45%;
   }
 `;
 
