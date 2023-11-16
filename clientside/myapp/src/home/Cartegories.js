@@ -22,8 +22,12 @@ export const Container = styled.div`
   width: 85%;
   height: 95%;
   overflow-x: hidden;
-  @media (max-width: 480px) {
+  /* @media (max-width: 480px) {
     width: 90%;
+  } */
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+    /* margin-left: 5%; */
   }
 `;
 
@@ -34,8 +38,11 @@ export const Topdiv = styled.div`
     /* color: #610c9f; */
     /* font-weight: 700; */
   }
-  @media (max-width: 480px) {
+  /* @media (max-width: 480px) {
     margin-top: 30px;
+  } */
+  @media only screen and (max-width: 600px) {
+    width: 90%;
   }
 `;
 export const Carts = styled.div`
@@ -58,11 +65,21 @@ export const CartSstyled = styled.div`
 export const Shop = styled.div`
   height: 80vh;
   width: 100%;
-  @media (max-width: 480px) {
+  height: auto;
+  /* @media (max-width: 480px) {
     margin-top: 30px;
     height: auto;
+  } */
+  @media only screen and (max-width: 600px) {
+    height: auto;
+    margin-top: 30px;
+    width: 90%;
   }
-  /* background-color: red; */
+  @media only screen and (min-width: 768px) {
+    height: auto;
+  }
+  @media only screen and (min-width: 992px) {
+  }
 `;
 
 export const MobileCart = styled.div`
@@ -99,7 +116,7 @@ export const Cartegories = () => {
         <Topdiv>
           <h1>Cartegories</h1>
         </Topdiv>
-        <Carts className=" d-none d-md-flex mt-4 d-flex justify-content-around">
+        <Carts className=" d-none d-lg-flex mt-4 d-flex justify-content-around">
           <Cart pic={yeist} type="all" />
           <Cart pic={cake} type="cake" />
           <Cart pic={potato} type="potato" />
@@ -110,7 +127,7 @@ export const Cartegories = () => {
           <Cart pic={boston} type="boston cream donut" />
         </Carts>
 
-        <MobileCart className=" mt-4 d-flex d-md-none">
+        <MobileCart className=" mt-4 d-flex d-lg-none">
           <Sliders
             onClick={() => {
               setOpenModal(!openModal);
@@ -118,7 +135,7 @@ export const Cartegories = () => {
           />
         </MobileCart>
 
-        <Shop className=" d-flex flex-wrap">
+        <Shop className=" d-flex flex-wrap justify-content-center">
           <ItemCard />
           <ItemCard />
           <ItemCard />

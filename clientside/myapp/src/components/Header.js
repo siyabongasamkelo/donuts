@@ -73,15 +73,12 @@ export const NavStyled = styled.nav`
 
 export const MobileHeader = styled.div`
   height: 100vh;
-  /* width: 100vw;  */
   background-color: white;
   position: absolute;
   z-index: 1;
   top: 0%;
   border-radius: 10px 0 0 10px;
   overflow-x: hidden;
-  /* width: 1px; */
-  /* display: ${(props) => props.dis}; */
   .logo2 {
     height: 20%;
     h3 {
@@ -92,6 +89,7 @@ export const MobileHeader = styled.div`
     img {
       height: 70%;
       margin-top: 5%;
+      filter: drop-shadow(30px 5px 5px #666666);
     }
   }
   .links {
@@ -110,9 +108,11 @@ export const MobileHeader = styled.div`
   .sprinkle {
     height: 50px;
     margin-left: 70%;
+    filter: drop-shadow(30px 5px 5px #666666);
   }
   .sprinkle2 {
     height: 100px;
+    filter: drop-shadow(30px 5px 5px #666666);
   }
   @media (max-width: 480px) {
   }
@@ -161,7 +161,7 @@ const Header = () => {
       </div>
 
       <MobileHeader
-        className="d-md-none d-lg-none"
+        className="d-lg-none"
         as={motion.div}
         animate={{
           x: -35,

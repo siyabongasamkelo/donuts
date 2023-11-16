@@ -3,7 +3,7 @@ import s1 from "../images/s1.png";
 import { StarFill, BagFill } from "react-bootstrap-icons";
 
 export const ItemCardStyled = styled.div`
-  height: 320px;
+  /* height: 320px;
   width: 220px;
   margin-left: 5.3%;
   margin-top: 2%;
@@ -43,8 +43,8 @@ export const ItemCardStyled = styled.div`
         font-size: 20px;
       }
     }
-  }
-  @media (max-width: 480px) {
+  } */
+  /* @media (max-width: 480px) {
     width: 40%;
     height: 220px;
     margin-top: 5%;
@@ -74,6 +74,90 @@ export const ItemCardStyled = styled.div`
       .text2 {
         h2 {
           font-size: 13px;
+        }
+      }
+    }
+  } */
+  @media only screen and (max-width: 600px) {
+    background-color: #9fbb73;
+    border-radius: 10px;
+    width: 45%;
+    height: 200px;
+    margin-top: 5%;
+    margin-left: 5%;
+    .container {
+      width: 95%;
+      height: 95%;
+      .pic {
+        height: 80%;
+        img {
+          height: 100px;
+          transform: scale(150%);
+          filter: drop-shadow(8px 5px 5px #666666);
+        }
+      }
+      .text {
+        height: 15%;
+        margin-top: -20px;
+        p {
+          font-size: 11px;
+        }
+        div {
+          svg {
+            transform: scale(70%);
+          }
+          p {
+            font-size: 11px;
+          }
+        }
+      }
+      .text2 {
+        h2 {
+          font-size: 13px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    background-color: #9fbb73;
+    border-radius: 10px;
+    width: 45%;
+    height: 200px;
+    margin-top: 10%;
+    margin-left: 5%;
+    .container {
+      width: 95%;
+      height: 95%;
+      .pic {
+        height: 80%;
+        /* background-color: red; */
+        margin-top: -10%;
+        img {
+          height: 100px;
+          transform: scale(180%);
+          filter: drop-shadow(8px 5px 5px #666666);
+        }
+      }
+      .text {
+        height: 15%;
+        margin-top: -20px;
+        p {
+          font-size: 13px;
+        }
+        div {
+          svg {
+            transform: scale(90%);
+          }
+          p {
+            font-size: 13px;
+            margin-left: 5px;
+          }
+        }
+      }
+      .text2 {
+        h2 {
+          font-size: 15px;
         }
       }
     }
