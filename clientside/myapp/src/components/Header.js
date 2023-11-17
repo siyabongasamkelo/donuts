@@ -16,6 +16,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import sprinkles from "../images/sprinkles.png";
 import sprinkles2 from "../images/sprinkles2.png";
+import { LoginMordal } from "./LoginMordal";
 
 export const HeaderStyled = styled.header`
   @media only screen and (max-width: 600px) {
@@ -27,7 +28,6 @@ export const HeaderStyled = styled.header`
     }
     .icons {
       margin-right: 20px;
-      background-color: black;
       svg {
         transform: scale(160%);
         margin-left: 20px;
@@ -131,10 +131,14 @@ const Header = () => {
   const [closeIt, setCloseIt] = useState(true);
   const [display, setDisplay] = useState("block");
 
+  const [openModal, setOpenModal] = useState(false);
+
   return (
     <HeaderStyled className=" d-flex justify-content-between align-items-center">
       <div className="logo">
-        <img src={donut} alt="donut logo" />
+        <Link to="/">
+          <img src={donut} alt="donut logo" />
+        </Link>
       </div>
       <NavStyled className=" d-none d-lg-block">
         <ul className=" d-flex">
@@ -154,8 +158,14 @@ const Header = () => {
       </NavStyled>
 
       <div className="icons d-flex">
-        <Person />
-        <Bag />
+        <Person
+          onClick={() => {
+            setOpenModal(!openModal);
+          }}
+        />
+        <Link to="/cart">
+          <Bag />
+        </Link>
       </div>
 
       <div className="menu d-block d-lg-none">
@@ -170,6 +180,13 @@ const Header = () => {
           }}
         />
       </div>
+
+      <LoginMordal
+        openModal={openModal}
+        onCloseModal={() => {
+          setOpenModal(false);
+        }}
+      />
 
       <MobileHeader
         className="d-lg-none"
