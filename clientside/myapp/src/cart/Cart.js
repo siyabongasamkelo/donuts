@@ -485,68 +485,6 @@ export const CartDiv = styled.div`
 `;
 
 export const CartCardStyled = styled.div`
-  /* height: 60px;
-  width: 75%;
-  margin-left: 20%;
-  margin-top: 2%;
-  background-color: #f3b664;
-  border-radius: 10px;
-  div {
-    width: 100%;
-    .pic {
-      img {
-        height: 60px;
-        aspect-ratio: 1 / 1;
-      }
-    }
-    div {
-      margin-left: 40px;
-      .counter {
-        height: 60px;
-        margin: 0;
-        .minus {
-          height: 80%;
-          width: 60px;
-          border-radius: 0 30px 30px 0;
-          background-color: #ff6e31;
-          margin: 0;
-          margin-top: 5%;
-          cursor: pointer;
-          transition: 0.5s ease-in-out;
-          &:hover {
-            box-shadow: 0 5px 15px #ff6e31;
-          }
-        }
-        .count {
-          width: 60px;
-          height: 80%;
-          margin: 0;
-          margin-top: 5%;
-        }
-        .add {
-          height: 80%;
-          width: 60px;
-          border-radius: 30px 0 0 30px;
-          margin: 0;
-          margin-top: 5%;
-          background-color: #ff6e31;
-          cursor: pointer;
-          transition: 0.5s ease-in-out;
-          &:hover {
-            box-shadow: 0 5px 15px #ff6e31;
-          }
-        }
-      }
-      svg {
-        transform: scale(150%);
-        cursor: pointer;
-        transition: 0.5s ease-in-out;
-        &:hover {
-          fill: #ff6e31;
-        }
-      }
-    }
-  } */
   @media only screen and (max-width: 600px) {
     height: 60px;
     width: 100%;
@@ -696,7 +634,6 @@ export const CartCardStyled = styled.div`
   @media only screen and (min-width: 1200px) {
     height: 80px;
     width: 100%;
-    /* margin-left: 17%; */
     margin-top: 2%;
     background-color: #f3b664;
     border-radius: 10px;
@@ -709,7 +646,6 @@ export const CartCardStyled = styled.div`
         }
       }
       div {
-        /* margin-left: 40px; */
         .counter {
           height: 60px;
           margin: 0;
