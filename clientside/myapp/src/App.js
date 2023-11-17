@@ -4,7 +4,7 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import { Cart } from "./cart/Cart";
+import { CartPage } from "./pages/CartPage";
 import { HomePage } from "./pages/HomePage";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <Route>
         <Route index element={<HomePage />} />
         <Route path="/" element={<HomePage />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<CartPage />} />
       </Route>
     )
   );

@@ -59,6 +59,13 @@ export const LeftDiv = styled.div`
   .icons {
     svg {
       filter: drop-shadow(10px 2px 2px #666666);
+      transform: scale(150%);
+      margin-top: 20px;
+      cursor: pointer;
+      transition: 0.5s ease-in-out;
+      &:hover {
+        fill: #ec8f5e;
+      }
     }
   }
   @media only screen and (max-width: 600px) {
@@ -109,6 +116,15 @@ export const LeftDiv = styled.div`
   @media only screen and (min-width: 992px) {
     .icons {
       margin-top: 7rem;
+      svg {
+        transform: scale(150%);
+        margin-top: 20px;
+        cursor: pointer;
+        transition: 0.5s ease-in-out;
+        &:hover {
+          fill: #f3b664;
+        }
+      }
     }
     img {
       margin-top: -18rem;

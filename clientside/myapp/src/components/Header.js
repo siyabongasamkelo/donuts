@@ -27,9 +27,15 @@ export const HeaderStyled = styled.header`
     }
     .icons {
       margin-right: 20px;
+      background-color: black;
       svg {
         transform: scale(160%);
         margin-left: 20px;
+        cursor: pointer;
+        transition: 0.5s ease-in-out;
+        &:hover {
+          fill: #f3b664;
+        }
       }
     }
     .menu {
@@ -50,6 +56,11 @@ export const HeaderStyled = styled.header`
       svg {
         transform: scale(160%);
         margin-left: 20px;
+        cursor: pointer;
+        transition: 0.5s ease-in-out;
+        &:hover {
+          fill: #f3b664;
+        }
       }
     }
     .menu {
@@ -66,7 +77,7 @@ export const NavStyled = styled.nav`
     font-size: 16px;
     transition: 0.5s ease-in-out;
     &:hover {
-      color: #e90064;
+      color: #f3b664;
     }
   }
 `;
@@ -114,8 +125,6 @@ export const MobileHeader = styled.div`
     height: 100px;
     filter: drop-shadow(30px 5px 5px #666666);
   }
-  @media (max-width: 480px) {
-  }
 `;
 
 const Header = () => {
@@ -143,10 +152,12 @@ const Header = () => {
           </li>
         </ul>
       </NavStyled>
+
       <div className="icons d-flex">
         <Person />
         <Bag />
       </div>
+
       <div className="menu d-block d-lg-none">
         <List
           onClick={() => {
