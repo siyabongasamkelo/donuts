@@ -3,7 +3,6 @@ const cloudinary = require("../utils/cloudinary");
 const Users = require("../model/Users");
 
 module.exports.register = async (req, res) => {
-  //   async (req, res) => {
   const file = req.files;
   const { password, email, username } = req.body;
 
@@ -29,8 +28,4 @@ module.exports.register = async (req, res) => {
     .catch((err) => {
       res.json("please make sure no field is empty");
     });
-
-  // console.log(req.files.file.tempFilePath);
-  // res.json("testing ");
-  //   };
 };

@@ -17,7 +17,6 @@ const validation = (schema) => async (req, res, next) => {
       console.log("user already exist");
       return res.status(400).json({ error: ["user already exists"] });
     }
-    // return next();
   } catch (error) {
     console.log(error);
     return res.status(400).json({ error: error.errors });

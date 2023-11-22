@@ -8,7 +8,6 @@ export const userSchema = yup.object().shape({
     .string()
     .oneOf([yup.ref("password"), null], "passwords must match")
     .required("confirm your password"),
-  // image: yup.mixed().required(),
   image: yup
     .mixed()
     .required("image required")
