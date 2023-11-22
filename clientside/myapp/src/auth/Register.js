@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
 import {
+  ExclamationTriangle,
   Facebook,
   Github,
   Instagram,
@@ -11,8 +12,13 @@ import {
 import sprinkles from "../images/sprinkles.png";
 import sprinkles2 from "../images/sprinkles2.png";
 import sprinkles3 from "../images/sprinkles3.png";
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { BaseUrl } from "../utils/BaseUrl";
+import { useFormik } from "formik";
+import { userSchema } from "../validations/UserValidation";
+import { Spinner } from "flowbite-react";
 
 export const RegisterPagestyled = styled.div`
   width: 100vw;
@@ -303,7 +309,7 @@ export const TheCardStyled = styled.div`
 
 export const MyButton = styled.button`
   height: 50px;
-  width: 180px;
+  width: 100%;
   border-radius: 30px;
   background-color: #f3b664;
   cursor: pointer;
@@ -315,65 +321,194 @@ export const MyButton = styled.button`
 
 // this is the css for the form
 export const FormStyled = styled.div`
-  margin-top: 20%;
-  margin-bottom: 25%;
+  margin-top: 10%;
+  margin-bottom: 20%;
   width: 500px;
 `;
 
 export const RegForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [isError, setIsErorr] = useState(false);
+
+  const showToastMessage = (message) => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const succToastMessage = (message) => {
+    toast.success(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+      conPassword: "",
+      image: "",
+    },
+    validationSchema: userSchema,
+    onSubmit: async () => {
+      setLoading(true);
+      setIsErorr(false);
+      const { image } = formik.values;
+      const { username } = formik.values;
+      const { email } = formik.values;
+      const { password } = formik.values;
+      const { conPassword } = formik.values;
+
+      const formData = new FormData();
+      formData.append("file", image);
+      formData.append("username", username);
+      formData.append("email", email);
+      formData.append("password", password);
+      formData.append("conPassword", conPassword);
+
+      axios
+        .post(`${BaseUrl}/add/user`, formData)
+        .then((res) => {
+          succToastMessage(res.data);
+          setLoading(false);
+        })
+        .catch((err) => {
+          setLoading(false);
+          setIsErorr(true);
+          err?.response?.data?.error?.map((error) => {
+            return showToastMessage(error);
+          });
+          showToastMessage(err?.response?.data);
+        });
+    },
+  });
+
   return (
-    <FormStyled className=" d-flex flex-column align-items-center">
-      <form className="flex max-w-md flex-col gap-4">
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="email2" value="Your email" />
-          </div>
-          <TextInput
-            id="email2"
-            type="email"
-            placeholder="name@flowbite.com"
-            required
-            shadow
-          />
-        </div>
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="username" value="Your username" />
-          </div>
-          <TextInput
-            id="username"
+    <FormStyled className=" d-flex justify-content-center">
+      <form onSubmit={formik.handleSubmit}>
+        <div className="mb-3">
+          <label for="exampleInputEmail1" className="form-label">
+            Username
+          </label>
+          <input
             type="text"
-            placeholder="username"
-            required
-            shadow
+            name="username"
+            value={formik.values.username}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className="form-control rounded-3 "
+            id="username"
+            aria-describedby="emailHelp"
           />
-        </div>
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="password2" value="Your password" />
+          <div id="emailHelp" className="form-text text-danger">
+            {formik.errors.username}
           </div>
-          <TextInput id="password2" type="password" required shadow />
         </div>
-        <div>
-          <div className="mb-2 block">
-            <Label htmlFor="repeat-password" value="Repeat password" />
+
+        <div className="mb-3">
+          <label for="exampleInputEmail1" className="form-label">
+            Email address
+          </label>
+          <input
+            type="email"
+            name="email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className="form-control rounded-3 "
+            id="email"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" className="form-text text-danger">
+            {formik.errors.email}
           </div>
-          <TextInput id="repeat-password" type="password" required shadow />
         </div>
-        <div className="flex items-center gap-2">
-          <Checkbox id="agree" />
-          <Label htmlFor="agree" className="flex">
-            I agree with the&nbsp;
-            <Link
-              href="#"
-              className="text-cyan-600 hover:underline dark:text-cyan-500"
+
+        <div className="mb-3">
+          <label for="exampleInputEmail1" className="form-label">
+            Password
+          </label>
+          <input
+            type="password"
+            name="password"
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className="form-control rounded-3 "
+            id="password"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" className="form-text text-danger">
+            {formik.errors.password}
+          </div>
+        </div>
+
+        <div className="mb-3">
+          <label for="exampleInputEmail1" className="form-label">
+            confirm password
+          </label>
+          <input
+            type="password"
+            name="conPassword"
+            value={formik.values.conPassword}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className="form-control rounded-3 "
+            id="conPassword"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" className="form-text text-danger">
+            {formik.errors.conPassword}
+          </div>
+        </div>
+
+        <div className="mb-3">
+          <label for="exampleInputEmail1" className="form-label">
+            profile photo
+          </label>
+          <br></br>
+          <input
+            type="file"
+            name="image"
+            onChange={(e) => {
+              formik.setFieldValue("image", e.target.files[0]);
+            }}
+          />
+          <div id="emailHelp" className="form-text text-danger">
+            {formik.errors.image}
+          </div>
+        </div>
+
+        <MyButton type="submit">
+          {loading ? (
+            <Spinner />
+          ) : isError ? (
+            <div
+              className=" d-flex justify-content-center align-items-center"
+              onClick={formik.handleSubmit}
             >
-              terms and conditions
-            </Link>
-          </Label>
-        </div>
-        <Button type="submit">Register new account</Button>
+              <ExclamationTriangle />
+              <label style={{ marginLeft: "10px" }}>
+                Error occured try again
+              </label>
+            </div>
+          ) : (
+            "Create User"
+          )}
+        </MyButton>
       </form>
+
+      {/* <form onSubmit={formik.handleSubmit}>
+        <input
+          type="file"
+          name="image"
+          onhCange={(e) => {
+            formik.setFieldValue("image", e.target.files[0]);
+          }}
+        />
+        <button type="submit">Submit</button>
+      </form> */}
     </FormStyled>
   );
 };
@@ -383,9 +518,13 @@ export const Register = () => {
     <RegisterPagestyled className=" d-flex justify-content-center align-items-center overflow-x-hidden">
       <Contatiner className=" d-flex justify-content-center align-items-center overflow-x-hidden">
         <MainDiv>
+          <ToastContainer />
           <Header />
           <HeroDiv className=" d-flex">
-            <LeftDiv className=" d-flex flex-column justify-content-center align-items-center">
+            <LeftDiv
+              // className=" d-flex flex-column justify-content-center align-items-center"
+              className=" d-none d-lg-flex flex-lg-column justify-content-lg-center align-items-lg-center"
+            >
               <div className="icons">
                 <Facebook />
                 <Whatsapp />
@@ -403,7 +542,7 @@ export const Register = () => {
                 <RegForm />
               </div>
             </Middle>
-            <RightDiv>
+            <RightDiv className=" d-none d-lg-block ">
               <img src={sprinkles} alt="sprinkles" />
               <img
                 className="sprinkles d-none d-md-block"
