@@ -19,7 +19,9 @@ connection.once("open", () => {
   console.log("mongodb database connection established successfuly");
 });
 
+//auth routes
 app.use("/add", require("./routes/Register"));
+app.use("/login", require("./routes/Login"));
 
 app.listen(process.env.PORT, () => {
   console.log(`running on port ${process.env.PORT}`);
