@@ -25,6 +25,7 @@ export const Contatiner = styled.div`
   }
 
   @media only screen and (min-width: 768px) {
+    width: 90%;
     margin-top: 2rem;
     overflow-x: visible;
   }
@@ -40,24 +41,13 @@ export const HeroDiv = styled.div`
 
 export const LeftDiv = styled.div`
   @media only screen and (max-width: 600px) {
-    /* height: 34vh; */
     margin-top: 12%;
     .pic {
       img {
         transform: scale(120%);
+        filter: drop-shadow(30px 5px 5px #666666);
       }
     }
-  }
-  @media only screen and (min-width: 768px) {
-  }
-
-  @media only screen and (min-width: 992px) {
-  }
-`;
-
-export const RightDiv = styled.div`
-  @media only screen and (max-width: 600px) {
-    /* height: 54vh; */
     .text {
       h1 {
         font-size: 22px;
@@ -82,15 +72,99 @@ export const RightDiv = styled.div`
         margin-top: 8%;
       }
     }
+  }
+  @media only screen and (min-width: 768px) {
+    margin-top: 8%;
+    .pic {
+      img {
+        transform: scale(110%);
+        filter: drop-shadow(30px 5px 5px #666666);
+      }
+    }
+    .text {
+      width: 85%;
+      margin-left: 7.5%;
+      h1 {
+        font-size: 32px;
+        font-weight: 900;
+        letter-spacing: 5px;
+      }
+      h4 {
+        margin-top: 3%;
+        font-size: 22px;
+        font-weight: 900;
+      }
+      p {
+        margin-top: 5%;
+        text-align: justify;
+        font-size: 15px;
+        letter-spacing: 0.8px;
+      }
+    }
+    .action {
+      button {
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 8%;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 992px) {
+    background-color: red;
+  }
+  @media only screen and (min-width: 1200px) {
+    width: 50%;
+  }
+`;
+
+export const RightDiv = styled.div`
+  @media only screen and (max-width: 600px) {
+    /* height: 54vh; */
+
     .recommended {
-      margin-top: 5%;
+      margin-top: 10%;
+      h3 {
+        font-size: 12px;
+      }
     }
     .reviews {
-      margin-top: 5%;
+      margin-top: 10%;
+      h3 {
+        font-size: 12px;
+      }
       margin-bottom: 30px;
     }
   }
   @media only screen and (min-width: 768px) {
+    .recommended {
+      margin-top: 7%;
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+      }
+      div {
+        .itemCard {
+          margin-left: 0;
+          margin-left: 3.5%;
+        }
+      }
+    }
+    .reviews {
+      margin-top: 7%;
+      margin-bottom: 30px;
+      h3 {
+        font-size: 18px;
+        font-weight: 600;
+      }
+      div {
+        .reviewCard {
+          margin-left: 2%;
+        }
+      }
+    }
+  }
+  @media only screen and (min-width: 992px) {
   }
   @media only screen and (min-width: 1200px) {
   }
@@ -115,12 +189,11 @@ const SingleProduct = () => {
         <MainDiv>
           <Header />
           <HeroDiv className=" d-flex flex-column">
-            <LeftDiv className=" d-flex align-items-center accordion justify-content-center">
+            <LeftDiv className=" d-flex flex-column">
               <div className="pic">
                 <img src={s1} alt="donut" />
               </div>
-            </LeftDiv>
-            <RightDiv>
+
               <div className="text text-center">
                 <h1>Chocolate Donut</h1>
                 <h4>R 35.00</h4>
@@ -133,6 +206,8 @@ const SingleProduct = () => {
               <div className="action">
                 <MyButton>Add to cart</MyButton>
               </div>
+            </LeftDiv>
+            <RightDiv>
               <div className="recommended">
                 <div>
                   <h3>Recommended</h3>

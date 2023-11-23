@@ -274,7 +274,7 @@ export const Button = styled.button`
 
 export const ItemCard = () => {
   return (
-    <ItemCardStyled>
+    <ItemCardStyled className="itemCard">
       <div className="container">
         <div className="pic d-flex ">
           <img src={s1} alt="donut" />

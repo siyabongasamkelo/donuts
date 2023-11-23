@@ -172,7 +172,7 @@ export const Contaner = styled.div`
 
 export const ReviewCard = () => {
   return (
-    <ReviewStyled className=" d-flex justify-content-center align-items-center">
+    <ReviewStyled className="reviewCard d-flex justify-content-center align-items-center">
       <Contaner>
         <div className="upper d-flex justify-content-between">
           <div className="user d-flex">
