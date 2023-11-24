@@ -9,6 +9,7 @@ import { HomePage } from "./pages/HomePage";
 import { RegisterPage } from "./pages/RegisterPage";
 import LoginPage from "./pages/LoginPage";
 import SingleProdPage from "./pages/SingleProdPage";
+import AddProductPage from "./pages/AddProductPage";
 
 function App() {
   const router = createBrowserRouter(
@@ -20,6 +21,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/single" element={<SingleProdPage />} />
+        <Route path="/add" element={<AddProductPage />} />
       </Route>
     )
   );
