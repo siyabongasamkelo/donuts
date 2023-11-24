@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import { ItemCard } from "../components/ItemCard";
 import s1 from "../images/s1.png";
+import sprinkles4 from "../images/sprinkles4.png";
+import sprinkles5 from "../images/sprinkles5.png";
 import { ReviewCard } from "../components/ReviewCard";
 import { StarFill } from "react-bootstrap-icons";
 
@@ -111,6 +113,13 @@ export const LeftDiv = styled.div`
         letter-spacing: 0.8px;
       }
     }
+    .sizes {
+      margin-top: 8%;
+      button {
+        width: 20%;
+        border-radius: 10px;
+      }
+    }
     .action {
       button {
         width: 90%;
@@ -121,7 +130,7 @@ export const LeftDiv = styled.div`
   }
 
   @media only screen and (min-width: 992px) {
-    margin-bottom: 8%;
+    /* margin-bottom: 8%;
     .pic {
       width: 50%;
       img {
@@ -135,27 +144,151 @@ export const LeftDiv = styled.div`
       .text {
         margin-top: 10%;
       }
-    }
-  }
-  @media only screen and (min-width: 1200px) {
+    } */
+
     .pic {
       img {
         /* margin-left: -10%; */
-        margin-left: 0%;
+        transform: scale(105%);
+        margin-left: -9%;
         margin-top: 10%;
-        transform: scale(150%);
+        /* transform: scale(150%); */
       }
     }
 
     .otherside {
       width: 25%;
-      background-color: red;
+      margin-left: -15%;
+      border-radius: 10px;
+      background-color: #ff6e31;
       .sizes {
         margin-top: 5%;
         button {
           width: 15%;
+          border-radius: 10px;
         }
       }
+      .text {
+        div {
+          h4,
+          div {
+            margin-top: 8%;
+          }
+        }
+      }
+    }
+    .details {
+      width: 25%;
+      margin-left: 10%;
+      border-radius: 10px;
+      background-color: #ff6e31;
+      .cover {
+        height: 90%;
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 5%;
+        div {
+          margin-top: 8%;
+          margin-left: 5%;
+          p {
+            font-size: 14px;
+          }
+          h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 5px;
+          }
+          div {
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+    .sprinkle1 {
+      position: absolute;
+      transform: scale(30%);
+      top: 0%;
+      left: 0;
+    }
+    .sprinkle2 {
+      position: absolute;
+      transform: scale(40%);
+      top: 58%;
+      left: 76%;
+    }
+  }
+  @media only screen and (min-width: 1200px) {
+    .pic {
+      img {
+        transform: scale(105%);
+        margin-left: -9%;
+        margin-top: 10%;
+      }
+    }
+
+    .otherside {
+      width: 25%;
+      margin-left: -4%;
+      border-radius: 10px;
+      background-color: #ff6e31;
+      .sizes {
+        margin-top: 5%;
+        button {
+          width: 15%;
+          border-radius: 10px;
+        }
+      }
+      .text {
+        div {
+          h4,
+          div {
+            margin-top: 8%;
+          }
+        }
+      }
+    }
+    .details {
+      width: 25%;
+      margin-left: 10%;
+      border-radius: 10px;
+      background-color: #ff6e31;
+      .cover {
+        height: 90%;
+        width: 90%;
+        margin-left: 5%;
+        margin-top: 5%;
+        div {
+          margin-top: 8%;
+          margin-left: 5%;
+          p {
+            font-size: 14px;
+          }
+          h2 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 5px;
+          }
+          div {
+            p {
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+    .sprinkle1 {
+      position: absolute;
+      transform: scale(30%);
+      top: 0%;
+      left: 0;
+    }
+    .sprinkle2 {
+      position: absolute;
+      transform: scale(40%);
+      top: 58%;
+      left: 76%;
     }
   }
 `;
@@ -207,6 +340,20 @@ export const RightDiv = styled.div`
     }
   }
   @media only screen and (min-width: 992px) {
+    .recommended {
+      div {
+        .itemCard {
+          margin-left: 5%;
+        }
+      }
+    }
+    .reviews {
+      div {
+        .reviewCard {
+          margin-left: 3%;
+        }
+      }
+    }
   }
   @media only screen and (min-width: 1200px) {
   }
@@ -263,6 +410,43 @@ const SingleProduct = () => {
                   <MyButton>Add to cart</MyButton>
                 </div>
               </div>
+              <div className="details d-none d-lg-flex flex-column">
+                <div className="cover">
+                  <div>
+                    <p>TYPE</p>
+                    <h2>Amber</h2>
+                  </div>
+
+                  <div>
+                    <p>TOTAL VOLUME</p>
+                    <h2>20 BOTTLES 0F 5.9</h2>
+                  </div>
+
+                  <div>
+                    <p>STOCK LEFT</p>
+                    <h2>250 Bottles</h2>
+                  </div>
+
+                  <div style={{ marginLeft: "0" }}>
+                    <div className=" d-flex justify-content-between ">
+                      <p>Number</p> <p>b-123-67</p>
+                    </div>
+                    <div className=" d-flex justify-content-between ">
+                      <p>Released</p> <p>12-11-2022</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <img
+                src={sprinkles4}
+                alt="sprinkles"
+                className="sprinkle1 d-none d-lg-flex flex-column"
+              />
+              <img
+                src={sprinkles5}
+                alt="sprinkles"
+                className="sprinkle2 d-none d-lg-flex flex-column"
+              />
             </LeftDiv>
             <RightDiv>
               <div className="recommended">
