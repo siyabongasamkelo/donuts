@@ -2,10 +2,7 @@ import styled from "styled-components";
 import Header from "../components/Header";
 import { ItemCard } from "../components/ItemCard";
 import s1 from "../images/s1.png";
-import sprinkles4 from "../images/sprinkles4.png";
-import sprinkles5 from "../images/sprinkles5.png";
 import { ReviewCard } from "../components/ReviewCard";
-import { StarFill } from "react-bootstrap-icons";
 
 export const SingleProdStyled = styled.div`
   width: 100vw;
@@ -19,9 +16,6 @@ export const Contatiner = styled.div`
   height: 90%;
   border-radius: 20px;
   background-color: #ec8f5e;
-  /* @media (max-width: 480px) {
-    width: 90%;
-  } */
   @media only screen and (max-width: 600px) {
     width: 90%;
     overflow-x: visible;
@@ -52,8 +46,6 @@ export const LeftDiv = styled.div`
       }
     }
     .text {
-      /* width: 90%; */
-      margin-top: 10%;
       h1 {
         font-size: 22px;
         font-weight: 900;
@@ -69,13 +61,6 @@ export const LeftDiv = styled.div`
         text-align: justify;
         font-size: 14px;
         letter-spacing: 0.8px;
-      }
-    }
-    .sizes {
-      margin-top: 8%;
-      button {
-        width: 20%;
-        border-radius: 10px;
       }
     }
     .action {
@@ -113,13 +98,6 @@ export const LeftDiv = styled.div`
         letter-spacing: 0.8px;
       }
     }
-    .sizes {
-      margin-top: 8%;
-      button {
-        width: 20%;
-        border-radius: 10px;
-      }
-    }
     .action {
       button {
         width: 90%;
@@ -130,173 +108,15 @@ export const LeftDiv = styled.div`
   }
 
   @media only screen and (min-width: 992px) {
-    /* margin-bottom: 8%;
-    .pic {
-      width: 50%;
-      img {
-        transform: scale(110%);
-        filter: drop-shadow(30px 5px 5px #666666);
-        margin-left: -15%;
-      }
-    }
-    .otherside {
-      width: 50%;
-      .text {
-        margin-top: 10%;
-      }
-    } */
-
-    .pic {
-      img {
-        /* margin-left: -10%; */
-        transform: scale(105%);
-        margin-left: -9%;
-        margin-top: 10%;
-        /* transform: scale(150%); */
-      }
-    }
-
-    .otherside {
-      width: 25%;
-      margin-left: -15%;
-      border-radius: 10px;
-      background-color: #ff6e31;
-      .sizes {
-        margin-top: 5%;
-        button {
-          width: 15%;
-          border-radius: 10px;
-        }
-      }
-      .text {
-        div {
-          h4,
-          div {
-            margin-top: 8%;
-          }
-        }
-      }
-    }
-    .details {
-      width: 25%;
-      margin-left: 10%;
-      border-radius: 10px;
-      background-color: #ff6e31;
-      .cover {
-        height: 90%;
-        width: 90%;
-        margin-left: 5%;
-        margin-top: 5%;
-        div {
-          margin-top: 8%;
-          margin-left: 5%;
-          p {
-            font-size: 14px;
-          }
-          h2 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 5px;
-          }
-          div {
-            p {
-              font-size: 14px;
-            }
-          }
-        }
-      }
-    }
-    .sprinkle1 {
-      position: absolute;
-      transform: scale(30%);
-      top: 0%;
-      left: 0;
-    }
-    .sprinkle2 {
-      position: absolute;
-      transform: scale(40%);
-      top: 58%;
-      left: 76%;
-    }
+    background-color: red;
   }
   @media only screen and (min-width: 1200px) {
-    .pic {
-      img {
-        transform: scale(105%);
-        margin-left: -9%;
-        margin-top: 10%;
-      }
-    }
-
-    .otherside {
-      width: 25%;
-      margin-left: -4%;
-      border-radius: 10px;
-      background-color: #ff6e31;
-      .sizes {
-        margin-top: 5%;
-        button {
-          width: 15%;
-          border-radius: 10px;
-        }
-      }
-      .text {
-        div {
-          h4,
-          div {
-            margin-top: 8%;
-          }
-        }
-      }
-    }
-    .details {
-      width: 25%;
-      margin-left: 10%;
-      border-radius: 10px;
-      background-color: #ff6e31;
-      .cover {
-        height: 90%;
-        width: 90%;
-        margin-left: 5%;
-        margin-top: 5%;
-        div {
-          margin-top: 8%;
-          margin-left: 5%;
-          p {
-            font-size: 14px;
-          }
-          h2 {
-            font-size: 18px;
-            font-weight: 600;
-            margin-top: 5px;
-          }
-          div {
-            p {
-              font-size: 14px;
-            }
-          }
-        }
-      }
-    }
-    .sprinkle1 {
-      position: absolute;
-      transform: scale(30%);
-      top: 0%;
-      left: 0;
-    }
-    .sprinkle2 {
-      position: absolute;
-      transform: scale(40%);
-      top: 58%;
-      left: 76%;
-    }
+    width: 50%;
   }
 `;
 
 export const RightDiv = styled.div`
   @media only screen and (max-width: 600px) {
-    /* height: 54vh; */
-
     .recommended {
       margin-top: 10%;
       h3 {
@@ -340,20 +160,6 @@ export const RightDiv = styled.div`
     }
   }
   @media only screen and (min-width: 992px) {
-    .recommended {
-      div {
-        .itemCard {
-          margin-left: 5%;
-        }
-      }
-    }
-    .reviews {
-      div {
-        .reviewCard {
-          margin-left: 3%;
-        }
-      }
-    }
   }
   @media only screen and (min-width: 1200px) {
   }
@@ -378,75 +184,23 @@ const SingleProduct = () => {
         <MainDiv>
           <Header />
           <HeroDiv className=" d-flex flex-column">
-            <LeftDiv className=" d-flex flex-column flex-lg-row">
+            <LeftDiv className=" d-flex flex-column">
               <div className="pic">
                 <img src={s1} alt="donut" />
               </div>
 
-              <div className="otherside">
-                <div className="text text-center">
-                  <h1>Chocolate Donut</h1>
-                  <div className=" d-flex align-items-center justify-content-between">
-                    <h4>R 35.00</h4>
-
-                    <div className=" d-flex align-items-center">
-                      <label style={{ fontWeight: "600" }}>5.0</label>
-                      <StarFill style={{ marginLeft: "5px" }} />
-                    </div>
-                  </div>
-                  <p>
-                    This donut is made of the italian chocolate what what i just
-                    need some text to fill this space so that my disigns can at
-                    least look decent enough
-                  </p>
-                </div>
-                <div className="sizes d-flex justify-content-around ">
-                  <MyButton>sm</MyButton>
-                  <MyButton>md</MyButton>
-                  <MyButton>lg</MyButton>
-                  <MyButton>xl</MyButton>
-                </div>
-                <div className="action">
-                  <MyButton>Add to cart</MyButton>
-                </div>
+              <div className="text text-center">
+                <h1>Chocolate Donut</h1>
+                <h4>R 35.00</h4>
+                <p>
+                  This donut is made of the italian chocolate what what i just
+                  need some text to fill this space so that my disigns can at
+                  least look decent enough
+                </p>
               </div>
-              <div className="details d-none d-lg-flex flex-column">
-                <div className="cover">
-                  <div>
-                    <p>TYPE</p>
-                    <h2>Amber</h2>
-                  </div>
-
-                  <div>
-                    <p>TOTAL VOLUME</p>
-                    <h2>20 BOTTLES 0F 5.9</h2>
-                  </div>
-
-                  <div>
-                    <p>STOCK LEFT</p>
-                    <h2>250 Bottles</h2>
-                  </div>
-
-                  <div style={{ marginLeft: "0" }}>
-                    <div className=" d-flex justify-content-between ">
-                      <p>Number</p> <p>b-123-67</p>
-                    </div>
-                    <div className=" d-flex justify-content-between ">
-                      <p>Released</p> <p>12-11-2022</p>
-                    </div>
-                  </div>
-                </div>
+              <div className="action">
+                <MyButton>Add to cart</MyButton>
               </div>
-              <img
-                src={sprinkles4}
-                alt="sprinkles"
-                className="sprinkle1 d-none d-lg-flex flex-column"
-              />
-              <img
-                src={sprinkles5}
-                alt="sprinkles"
-                className="sprinkle2 d-none d-lg-flex flex-column"
-              />
             </LeftDiv>
             <RightDiv>
               <div className="recommended">
