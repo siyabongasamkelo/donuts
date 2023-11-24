@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import { ItemCard } from "../components/ItemCard";
 import s1 from "../images/s1.png";
 import { ReviewCard } from "../components/ReviewCard";
+import { StarFill } from "react-bootstrap-icons";
 
 export const SingleProdStyled = styled.div`
   width: 100vw;
@@ -49,6 +50,8 @@ export const LeftDiv = styled.div`
       }
     }
     .text {
+      /* width: 90%; */
+      margin-top: 10%;
       h1 {
         font-size: 22px;
         font-weight: 900;
@@ -64,6 +67,13 @@ export const LeftDiv = styled.div`
         text-align: justify;
         font-size: 14px;
         letter-spacing: 0.8px;
+      }
+    }
+    .sizes {
+      margin-top: 8%;
+      button {
+        width: 20%;
+        border-radius: 10px;
       }
     }
     .action {
@@ -111,10 +121,42 @@ export const LeftDiv = styled.div`
   }
 
   @media only screen and (min-width: 992px) {
-    background-color: red;
+    margin-bottom: 8%;
+    .pic {
+      width: 50%;
+      img {
+        transform: scale(110%);
+        filter: drop-shadow(30px 5px 5px #666666);
+        margin-left: -15%;
+      }
+    }
+    .otherside {
+      width: 50%;
+      .text {
+        margin-top: 10%;
+      }
+    }
   }
   @media only screen and (min-width: 1200px) {
-    width: 50%;
+    .pic {
+      img {
+        /* margin-left: -10%; */
+        margin-left: 0%;
+        margin-top: 10%;
+        transform: scale(150%);
+      }
+    }
+
+    .otherside {
+      width: 25%;
+      background-color: red;
+      .sizes {
+        margin-top: 5%;
+        button {
+          width: 15%;
+        }
+      }
+    }
   }
 `;
 
@@ -189,22 +231,37 @@ const SingleProduct = () => {
         <MainDiv>
           <Header />
           <HeroDiv className=" d-flex flex-column">
-            <LeftDiv className=" d-flex flex-column">
+            <LeftDiv className=" d-flex flex-column flex-lg-row">
               <div className="pic">
                 <img src={s1} alt="donut" />
               </div>
 
-              <div className="text text-center">
-                <h1>Chocolate Donut</h1>
-                <h4>R 35.00</h4>
-                <p>
-                  This donut is made of the italian chocolate what what i just
-                  need some text to fill this space so that my disigns can at
-                  least look decent enough
-                </p>
-              </div>
-              <div className="action">
-                <MyButton>Add to cart</MyButton>
+              <div className="otherside">
+                <div className="text text-center">
+                  <h1>Chocolate Donut</h1>
+                  <div className=" d-flex align-items-center justify-content-between">
+                    <h4>R 35.00</h4>
+
+                    <div className=" d-flex align-items-center">
+                      <label style={{ fontWeight: "600" }}>5.0</label>
+                      <StarFill style={{ marginLeft: "5px" }} />
+                    </div>
+                  </div>
+                  <p>
+                    This donut is made of the italian chocolate what what i just
+                    need some text to fill this space so that my disigns can at
+                    least look decent enough
+                  </p>
+                </div>
+                <div className="sizes d-flex justify-content-around ">
+                  <MyButton>sm</MyButton>
+                  <MyButton>md</MyButton>
+                  <MyButton>lg</MyButton>
+                  <MyButton>xl</MyButton>
+                </div>
+                <div className="action">
+                  <MyButton>Add to cart</MyButton>
+                </div>
               </div>
             </LeftDiv>
             <RightDiv>
