@@ -28,7 +28,7 @@ export const Contatiner = styled.div`
   }
 
   @media only screen and (min-width: 768px) {
-    width: 90%;
+    width: 95%;
     margin-top: 2rem;
     overflow-x: visible;
   }
@@ -41,7 +41,6 @@ export const HeroDiv = styled.div`
   height: 90%;
   width: 100%;
 `;
-
 export const LeftDiv = styled.div`
   @media only screen and (max-width: 600px) {
     margin-top: 12%;
@@ -241,6 +240,9 @@ export const LeftDiv = styled.div`
         }
       }
       .text {
+        h1 {
+          margin-top: 12%;
+        }
         div {
           h4,
           div {
@@ -287,12 +289,11 @@ export const LeftDiv = styled.div`
     .sprinkle2 {
       position: absolute;
       transform: scale(40%);
-      top: 58%;
+      top: 48%;
       left: 76%;
     }
   }
 `;
-
 export const RightDiv = styled.div`
   @media only screen and (max-width: 600px) {
     /* height: 54vh; */
@@ -356,9 +357,16 @@ export const RightDiv = styled.div`
     }
   }
   @media only screen and (min-width: 1200px) {
+    .reviews {
+      div {
+        .reviewCard {
+          width: 50%;
+          margin-left: 3%;
+        }
+      }
+    }
   }
 `;
-
 export const MyButton = styled.button`
   height: 50px;
   width: 180px;
@@ -413,13 +421,13 @@ const SingleProduct = () => {
               <div className="details d-none d-lg-flex flex-column">
                 <div className="cover">
                   <div>
-                    <p>TYPE</p>
-                    <h2>Amber</h2>
+                    <p>Flavour</p>
+                    <h2>Chocoalte</h2>
                   </div>
 
                   <div>
-                    <p>TOTAL VOLUME</p>
-                    <h2>20 BOTTLES 0F 5.9</h2>
+                    <p>TOTAL CAKES</p>
+                    <h2>5 cakes</h2>
                   </div>
 
                   <div>
@@ -466,7 +474,7 @@ const SingleProduct = () => {
                 <div>
                   <h3>reviews</h3>
                 </div>
-                <div className=" d-flex flex-wrap">
+                <div className=" d-flex flex-wrap flex-lg-column">
                   <ReviewCard />
                   <ReviewCard />
                   <ReviewCard />
