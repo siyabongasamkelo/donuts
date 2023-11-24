@@ -23,6 +23,9 @@ connection.once("open", () => {
 app.use("/add", require("./routes/Register"));
 app.use("/login", require("./routes/Login"));
 
+//item routes
+app.use("/add", require("./routes/addItem"));
+
 app.listen(process.env.PORT, () => {
   console.log(`running on port ${process.env.PORT}`);
 });

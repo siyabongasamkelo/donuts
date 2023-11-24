@@ -8,15 +8,10 @@ dotenv.config();
 
 const maxAage = 3 * 24 * 60 * 60;
 const createToken = (id) => {
-  // return jwt.sign({ id }, "net ninja secret", {
   return jwt.sign({ id }, `${process.env.JWTSECRETE}`, {
     expiresIn: maxAage,
   });
 };
-
-function isEmpty(val) {
-  return val === undefined || val == null || val.length <= 0 ? true : false;
-}
 
 module.exports.register = async (req, res) => {
   const file = req.files;
@@ -25,7 +20,7 @@ module.exports.register = async (req, res) => {
   const results = await cloudinary.uploader
     .upload(file.file.tempFilePath)
     .catch((err) => {
-      res.json("an error occured while uploading your photo");
+      res.status(400).json("an error occured while uploading your photo");
       return;
     });
   let imageLink = results.secure_url;
@@ -39,10 +34,10 @@ module.exports.register = async (req, res) => {
 
   await Users.create(newUser)
     .then(() => {
-      res.json("user successfully registered");
+      res.status(400).json("user successfully registered");
     })
     .catch((err) => {
-      res.json("please make sure no field is empty");
+      res.status(400).json("please make sure no field is empty");
     });
 };
 
@@ -60,7 +55,9 @@ module.exports.login = async (req, res) => {
     res.cookie("jwt", token, { httpOnly: true, maxAge: maxAage * 1000 });
     req.session = theUser;
 
-    res.send({ auth: true, token: token, result: theUser, auther: "user" });
+    res
+      .status(200)
+      .send({ auth: true, token: token, result: theUser, auther: "user" });
   } else {
     res.status(400).json("incorrect email/password");
   }

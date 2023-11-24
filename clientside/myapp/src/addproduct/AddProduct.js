@@ -349,6 +349,7 @@ export const RegForm = () => {
       price: "",
       cart: "",
       quantity: "",
+      description: "",
       image: "",
     },
     validationSchema: productSchema,
@@ -360,6 +361,7 @@ export const RegForm = () => {
       const { price } = formik.values;
       const { cart } = formik.values;
       const { quantity } = formik.values;
+      const { description } = formik.values;
 
       const formData = new FormData();
       formData.append("file", image);
@@ -367,9 +369,11 @@ export const RegForm = () => {
       formData.append("price", price);
       formData.append("quantity", quantity);
       formData.append("cart", cart);
+      formData.append("description", description);
+      formData.append("date", new Date());
 
       axios
-        .post(`${BaseUrl}/add/user`, formData)
+        .post(`${BaseUrl}/add/item`, formData)
         .then((res) => {
           succToastMessage(res.data);
           setLoading(false);
@@ -394,16 +398,16 @@ export const RegForm = () => {
           </label>
           <input
             type="text"
-            name="username"
+            name="name"
             value={formik.values.name}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             className="form-control rounded-3 "
-            id="username"
+            id="name"
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" className="form-text text-danger">
-            {formik.errors.username}
+            {formik.errors.name}
           </div>
         </div>
 
@@ -412,17 +416,17 @@ export const RegForm = () => {
             Price
           </label>
           <input
-            type="email"
-            name="email"
+            type="text"
+            name="price"
             value={formik.values.price}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             className="form-control rounded-3 "
-            id="email"
+            id="price"
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" className="form-text text-danger">
-            {formik.errors.email}
+            {formik.errors.price}
           </div>
         </div>
 
@@ -430,18 +434,36 @@ export const RegForm = () => {
           <label for="exampleInputEmail1" className="form-label">
             Cartegory
           </label>
-          <input
-            type="password"
-            name="password"
+          {/* <input
+            type="text"
+            name="cart"
             value={formik.values.cart}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             className="form-control rounded-3 "
-            id="password"
+            id="cart"
             aria-describedby="emailHelp"
-          />
+          /> */}
+
+          <select
+            name="cart"
+            id="cart"
+            className="form-select"
+            aria-label="Default select example"
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+          >
+            <option selected>Cartegory</option>
+            <option value="Cake">Cake</option>
+            <option value="Potato">Potato</option>
+            <option value="Donut-holes">Donut-holes</option>
+            <option value="Jell-donut">Jelly-donut</option>
+            <option value="Beignet">Beignet</option>
+            <option value="Boston-creame-donut">Boston-creame-donut</option>
+          </select>
+
           <div id="emailHelp" className="form-text text-danger">
-            {formik.errors.password}
+            {formik.errors.cart}
           </div>
         </div>
 
@@ -450,13 +472,32 @@ export const RegForm = () => {
             Quantity
           </label>
           <input
-            type="password"
-            name="conPassword"
+            type="text"
+            name="quantity"
             value={formik.values.quantity}
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             className="form-control rounded-3 "
             id="conPassword"
+            aria-describedby="emailHelp"
+          />
+          <div id="emailHelp" className="form-text text-danger">
+            {formik.errors.quantity}
+          </div>
+        </div>
+
+        <div className="mb-3">
+          <label for="exampleInputEmail1" className="form-label">
+            Description
+          </label>
+          <input
+            type="text"
+            name="description"
+            value={formik.values.description}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            className="form-control rounded-3 "
+            id="description"
             aria-describedby="emailHelp"
           />
           <div id="emailHelp" className="form-text text-danger">

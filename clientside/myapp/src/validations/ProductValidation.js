@@ -5,6 +5,7 @@ export const productSchema = yup.object().shape({
   price: yup.number("price must be a number").required("price cannot be empty"),
   cart: yup.string().required(),
   quantity: yup.number().required("quantity cannot be empty"),
+  description: yup.string().required(),
   image: yup
     .mixed()
     .required("image required")
