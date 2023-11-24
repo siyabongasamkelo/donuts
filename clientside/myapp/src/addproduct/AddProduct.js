@@ -35,7 +35,6 @@ export const Contatiner = styled.div`
   @media only screen and (max-width: 600px) {
     width: 90%;
     width: 95%;
-    background-color: red;
     overflow-x: visible;
   }
 
