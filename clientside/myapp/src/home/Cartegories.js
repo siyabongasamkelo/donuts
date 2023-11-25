@@ -8,8 +8,12 @@ import jelly from "../images/jelly.png";
 import boston from "../images/boston.png";
 import { ItemCard } from "../components/ItemCard";
 import { Sliders } from "react-bootstrap-icons";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CartModal } from "../components/CartModal";
+import axios from "axios";
+import { BaseUrl } from "../utils/BaseUrl";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Cartstyled = styled.div`
   width: 100vw;
@@ -103,7 +107,41 @@ const Cart = ({ pic, type }) => {
 
 export const Cartegories = () => {
   const [openModal, setOpenModal] = useState(false);
+  const [items, setSetItmes] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
+  const showToastMessage = (message) => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const succToastMessage = (message) => {
+    toast.success(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  useEffect(() => {
+    setIsError(false);
+    setLoading(true);
+    axios
+      .get(`${BaseUrl}/get/item`)
+      .then((res) => {
+        setSetItmes(res.data);
+        succToastMessage("data fetching successfully");
+        setLoading(false);
+      })
+      .catch((err) => {
+        showToastMessage(err.message);
+        console.log(err);
+        setLoading(false);
+        setIsError(true);
+      });
+  }, []);
+
+  console.log(items);
   return (
     <Cartstyled className=" d-flex justify-content-center">
       <CartModal
@@ -113,6 +151,7 @@ export const Cartegories = () => {
         }}
       />
       <Container>
+        <ToastContainer />
         <Topdiv>
           <h1>Cartegories</h1>
         </Topdiv>
@@ -136,7 +175,7 @@ export const Cartegories = () => {
         </MobileCart>
 
         <Shop className=" d-flex flex-wrap ">
-          <ItemCard />
+          {/* <ItemCard />
           <ItemCard />
           <ItemCard />
           <ItemCard />
@@ -146,7 +185,17 @@ export const Cartegories = () => {
           <ItemCard />
           <ItemCard />
           <ItemCard />
-          <ItemCard />
+          <ItemCard /> */}
+          {items?.map((item, count) => {
+            return (
+              <ItemCard
+                name={item.name}
+                price={item.price}
+                key={count}
+                image={item.image}
+              />
+            );
+          })}
         </Shop>
       </Container>
     </Cartstyled>
