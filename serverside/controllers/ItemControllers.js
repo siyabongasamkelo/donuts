@@ -32,3 +32,12 @@ module.exports.addItem = async (req, res) => {
       res.status(400).json(err.message);
     });
 };
+
+module.exports.getItems = async (req, res) => {
+  try {
+    const theProducts = await Items.find();
+    res.status(200).json(theProducts);
+  } catch (err) {
+    console.log(err);
+  }
+};
