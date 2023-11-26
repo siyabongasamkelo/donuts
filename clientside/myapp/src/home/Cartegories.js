@@ -117,11 +117,12 @@ export const Cartegories = () => {
 
   if (process.env.REACT_APP_ENVIRONMENT === "DEVELOPMENT") {
     Url = "http://localhost:3001";
-  }
-  if (process.env.REACT_APP_ENVIRONMENT === "PRODUCTION") {
+  } else {
     Url = "https://donuts-4c1f.onrender.com";
   }
-
+  // if (process.env.REACT_APP_ENVIRONMENT === "PRODUCTION") {
+  //   Url = "https://donuts-4c1f.onrender.com";
+  // }
   const BaseUrl = Url;
 
   const [openModal, setOpenModal] = useState(false);
@@ -161,7 +162,6 @@ export const Cartegories = () => {
       });
   }, [dispatch, BaseUrl]);
 
-  // console.log(items);
   console.log(process.env.REACT_APP_ENVIRONMENT);
 
   const getItem = (id) => {
@@ -194,8 +194,6 @@ export const Cartegories = () => {
       showToastMessage("item added to cart");
     }
   };
-
-  console.log({ BaseUrl });
 
   return (
     <Cartstyled className=" d-flex justify-content-center">
