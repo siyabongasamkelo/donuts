@@ -15,7 +15,7 @@ import sprinkles3 from "../images/sprinkles3.png";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { BaseUrl } from "../utils/BaseUrl";
+// import { BaseUrl } from "../utils/BaseUrl";
 import { useFormik } from "formik";
 import { productSchema } from "../validations/ProductValidation";
 import { Spinner } from "flowbite-react";
@@ -330,6 +330,16 @@ export const FormStyled = styled.div`
 export const RegForm = () => {
   const [loading, setLoading] = useState(false);
   const [isError, setIsErorr] = useState(false);
+
+  let Url = "";
+
+  if (process.env.REACT_APP_ENVIRONMENT === "DEVELOPMENT") {
+    Url = "http://localhost:3001";
+  }
+  if (process.env.REACT_APP_ENVIRONMENT === "PRODUCTION") {
+    Url = "https://donuts-4c1f.onrender.com";
+  }
+  const BaseUrl = Url;
 
   const showToastMessage = (message) => {
     toast.error(message, {

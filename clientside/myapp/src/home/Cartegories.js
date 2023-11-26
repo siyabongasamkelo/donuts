@@ -11,7 +11,7 @@ import { Sliders } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import { CartModal } from "../components/CartModal";
 import axios from "axios";
-import { BaseUrl } from "../utils/BaseUrl";
+// import { BaseUrl } from "../utils/BaseUrl";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Spinner } from "flowbite-react";
@@ -113,6 +113,17 @@ const Cart = ({ pic, type }) => {
 export const Cartegories = () => {
   const theCart = useSelector((state) => state?.cart?.value);
 
+  let Url = "";
+
+  if (process.env.REACT_APP_ENVIRONMENT === "DEVELOPMENT") {
+    Url = "http://localhost:3001";
+  }
+  if (process.env.REACT_APP_ENVIRONMENT === "PRODUCTION") {
+    Url = "https://donuts-4c1f.onrender.com";
+  }
+
+  const BaseUrl = Url;
+
   const [openModal, setOpenModal] = useState(false);
   const [items, setSetItmes] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -136,19 +147,19 @@ export const Cartegories = () => {
     axios
       .get(`${BaseUrl}/get/items`)
       .then((res) => {
-        setSetItmes(res.data);
+        setSetItmes(res?.data);
         dispatch(clearItems());
-        dispatch(getAllItems(res.data));
+        dispatch(getAllItems(res?.data));
         succToastMessage("data fetching successfully");
         setLoading(false);
       })
       .catch((err) => {
         showToastMessage("Could not load items");
-        showToastMessage(err.message);
+        showToastMessage(err?.message);
         console.log(err);
         setLoading(false);
       });
-  }, [dispatch]);
+  }, [dispatch, BaseUrl]);
 
   console.log(items);
 
