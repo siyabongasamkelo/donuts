@@ -181,7 +181,7 @@ export const Cartegories = () => {
     }
   };
 
-  console.log(theCart);
+  console.log({ BaseUrl });
 
   return (
     <Cartstyled className=" d-flex justify-content-center">
