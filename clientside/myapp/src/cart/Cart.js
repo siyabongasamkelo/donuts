@@ -13,9 +13,7 @@ import sprinkles from "../images/sprinkles.png";
 import sprinkles2 from "../images/sprinkles2.png";
 import sprinkles3 from "../images/sprinkles3.png";
 import Button from "react-bootstrap/Button";
-import { ToastContainer, toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
-// import { clearCart } from "../Features/Cart";
 import { removeItem } from "../Features/Cart";
 import { detQuantity } from "../Features/Cart";
 
@@ -750,7 +748,6 @@ export const CartCard = ({ image, name, price, count, id, quantity }) => {
 export const Cart = () => {
   const theCart = useSelector((state) => state.cart.value);
   const [totalPrice, setTotalPrice] = useState(0);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     let totalP = 0;
@@ -762,24 +759,11 @@ export const Cart = () => {
     }
   }, [theCart, totalPrice]);
 
-  const showToastMessage = (message) => {
-    toast.success(message, {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-  };
-
-  const showErrorMessage = (message) => {
-    toast.error(message, {
-      position: toast.POSITION.TOP_RIGHT,
-    });
-  };
-
   return (
     <CartPagestyled className=" d-flex justify-content-center align-items-center overflow-x-hidden">
       <Contatiner className=" d-flex justify-content-center align-items-center overflow-x-hidden">
         <MainDiv>
           <Header />
-          <ToastContainer />
           <HeroDiv className=" d-flex">
             <LeftDiv className=" d-none d-lg-flex flex-lg-column justify-content-lg-center align-items-lg-center">
               <div className="icons">
@@ -818,10 +802,6 @@ export const Cart = () => {
                       <h3>Action</h3>
                     </div>
                   </div>
-                  {/* <CartCard />
-                  <CartCard />
-                  <CartCard />
-                  <CartCard /> */}
                   {theCart?.map((carts, count) => {
                     return (
                       <CartCard

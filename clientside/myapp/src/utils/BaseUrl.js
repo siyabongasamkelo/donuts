@@ -8,4 +8,3 @@ if (process.env.REACT_APP_ENVIRONMENT === "PRODUCTION") {
 }
 
 export const BaseUrl = Url;
-// export const BaseUrl = "http://localhost:3001";

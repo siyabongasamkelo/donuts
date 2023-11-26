@@ -148,7 +148,9 @@ export const Cartegories = () => {
         console.log(err);
         setLoading(false);
       });
-  }, []);
+  }, [dispatch]);
+
+  console.log(items);
 
   const getItem = (id) => {
     navigate(`/item/${id}`);
