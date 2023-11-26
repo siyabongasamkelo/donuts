@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
 import {
@@ -9,11 +9,15 @@ import {
   Twitter,
   Whatsapp,
 } from "react-bootstrap-icons";
-import donut from "../images/donut.png";
 import sprinkles from "../images/sprinkles.png";
 import sprinkles2 from "../images/sprinkles2.png";
 import sprinkles3 from "../images/sprinkles3.png";
 import Button from "react-bootstrap/Button";
+import { ToastContainer, toast } from "react-toastify";
+import { useSelector, useDispatch } from "react-redux";
+// import { clearCart } from "../Features/Cart";
+import { removeItem } from "../Features/Cart";
+import { detQuantity } from "../Features/Cart";
 // import { motion } from "framer-motion";
 
 export const CartPagestyled = styled.div`
@@ -642,7 +646,6 @@ export const CartCardStyled = styled.div`
       .pic {
         img {
           height: 80px;
-          aspect-ratio: 1 / 1;
         }
       }
       div {
@@ -698,37 +701,52 @@ export const CartCardStyled = styled.div`
   }
 `;
 
-export const CartCard = () => {
+export const CartCard = ({ image, name, price, count, id, quantity }) => {
+  const dispatch = useDispatch();
   return (
     <CartCardStyled>
       <div className=" d-flex justify-content-md-around align-items-center">
         <div>
-          <h3>1</h3>
+          <h3>{count}</h3>
         </div>
         <div className=" d-none d-md-block">
-          <h3>Chocolate Donuts</h3>
+          <h3>{name}</h3>
         </div>
         <div className="pic">
-          <img src={donut} alt="donut" />
+          <img src={image} alt="donut" />
         </div>
         <div>
-          <h3 className="price">R 120</h3>
+          <h3>R {price}</h3>
         </div>
         <div>
           <div className="counter d-flex">
-            <div className="add d-flex justify-content-center align-items-center">
+            <div
+              className="add d-flex justify-content-center align-items-center"
+              onClick={() => {
+                dispatch(detQuantity({ id: id, operator: "minus" }));
+              }}
+            >
               -
             </div>
             <div className="count d-flex justify-content-center align-items-center">
-              0
+              {quantity}
             </div>
-            <div className="minus d-flex justify-content-center align-items-center">
+            <div
+              className="minus d-flex justify-content-center align-items-center"
+              onClick={() => {
+                dispatch(detQuantity({ id: id, operator: "add" }));
+              }}
+            >
               +
             </div>
           </div>
         </div>
         <div>
-          <Trash />
+          <Trash
+            onClick={() => {
+              dispatch(removeItem({ id: id }));
+            }}
+          />
         </div>
       </div>
     </CartCardStyled>
@@ -736,11 +754,38 @@ export const CartCard = () => {
 };
 
 export const Cart = () => {
+  const theCart = useSelector((state) => state.cart.value);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    let totalP = 0;
+    if (theCart.length !== 0) {
+      for (let i = 0; i < theCart.length; i++) {
+        totalP = totalP + theCart[i].price * theCart[i].quantity;
+      }
+      setTotalPrice(totalP);
+    }
+  }, [theCart, totalPrice]);
+
+  const showToastMessage = (message) => {
+    toast.success(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const showErrorMessage = (message) => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
   return (
     <CartPagestyled className=" d-flex justify-content-center align-items-center overflow-x-hidden">
       <Contatiner className=" d-flex justify-content-center align-items-center overflow-x-hidden">
         <MainDiv>
           <Header />
+          <ToastContainer />
           <HeroDiv className=" d-flex">
             <LeftDiv className=" d-none d-lg-flex flex-lg-column justify-content-lg-center align-items-lg-center">
               <div className="icons">
@@ -779,10 +824,22 @@ export const Cart = () => {
                       <h3>Action</h3>
                     </div>
                   </div>
+                  {/* <CartCard />
                   <CartCard />
                   <CartCard />
-                  <CartCard />
-                  <CartCard />
+                  <CartCard /> */}
+                  {theCart?.map((carts, count) => {
+                    return (
+                      <CartCard
+                        image={carts.image}
+                        price={carts.price}
+                        name={carts.name}
+                        count={count + 1}
+                        quantity={carts?.quantity}
+                        id={carts.id}
+                      />
+                    );
+                  })}
                 </div>
                 <div className="promo">
                   <div className="check-cover text-white">
@@ -806,7 +863,7 @@ export const Cart = () => {
                       </div>
                       <div className=" d-flex justify-content-between">
                         <p>Total</p>
-                        <p>R 00.00</p>
+                        <p>R {totalPrice}</p>
                       </div>
                       <Button style={{ width: "100%" }}>
                         Continue to checkout
