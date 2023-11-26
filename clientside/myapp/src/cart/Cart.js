@@ -18,14 +18,9 @@ import { useSelector, useDispatch } from "react-redux";
 // import { clearCart } from "../Features/Cart";
 import { removeItem } from "../Features/Cart";
 import { detQuantity } from "../Features/Cart";
-// import { motion } from "framer-motion";
 
 export const CartPagestyled = styled.div`
   width: 100vw;
-  /* @media (max-width: 480px) {
-    background-color: #ec8f5e;
-    height: auto;
-  } */
   margin-bottom: 50px;
 `;
 export const Contatiner = styled.div`
@@ -429,7 +424,6 @@ export const CartDiv = styled.div`
   }
 
   @media only screen and (min-width: 1200px) {
-    /* height: auto; */
     height: 75vh;
     width: 100%;
     overflow-y: scroll;

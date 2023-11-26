@@ -1,4 +1,3 @@
-const router = require("express").Router();
 const cloudinary = require("../utils/cloudinary");
 const Users = require("../model/Users");
 const bcrypt = require("bcrypt");
@@ -21,6 +20,7 @@ module.exports.register = async (req, res) => {
     .upload(file.file.tempFilePath)
     .catch((err) => {
       res.status(400).json("an error occured while uploading your photo");
+      console.log(err);
       return;
     });
   let imageLink = results.secure_url;
