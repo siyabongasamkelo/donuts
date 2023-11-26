@@ -14,6 +14,11 @@ import axios from "axios";
 import { BaseUrl } from "../utils/BaseUrl";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Spinner } from "flowbite-react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllItems, clearItems } from "../Features/Items";
+import { addToCart } from "../Features/Cart";
 
 export const Cartstyled = styled.div`
   width: 100vw;
@@ -106,10 +111,13 @@ const Cart = ({ pic, type }) => {
 };
 
 export const Cartegories = () => {
+  const theCart = useSelector((state) => state?.cart?.value);
+
   const [openModal, setOpenModal] = useState(false);
   const [items, setSetItmes] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const showToastMessage = (message) => {
     toast.error(message, {
@@ -124,24 +132,57 @@ export const Cartegories = () => {
   };
 
   useEffect(() => {
-    setIsError(false);
     setLoading(true);
     axios
-      .get(`${BaseUrl}/get/item`)
+      .get(`${BaseUrl}/get/items`)
       .then((res) => {
         setSetItmes(res.data);
+        dispatch(clearItems());
+        dispatch(getAllItems(res.data));
         succToastMessage("data fetching successfully");
         setLoading(false);
       })
       .catch((err) => {
+        showToastMessage("Could not load items");
         showToastMessage(err.message);
         console.log(err);
         setLoading(false);
-        setIsError(true);
       });
   }, []);
 
-  console.log(items);
+  const getItem = (id) => {
+    navigate(`/item/${id}`);
+  };
+
+  const addingToCart = (item) => {
+    let exist = false;
+    for (let i = 0; i < theCart.length; i++) {
+      if (item._id === theCart[i].id) {
+        exist = true;
+      }
+    }
+    if (exist) {
+      showToastMessage("item already in cart");
+    } else {
+      dispatch(
+        addToCart({
+          item: {
+            id: item._id,
+            name: item.name,
+            brand: item.brand,
+            image: item.image,
+            price: item.price,
+            store: item.store,
+            quantity: 1,
+          },
+        })
+      );
+      showToastMessage("item added to cart");
+    }
+  };
+
+  console.log(theCart);
+
   return (
     <Cartstyled className=" d-flex justify-content-center">
       <CartModal
@@ -175,27 +216,31 @@ export const Cartegories = () => {
         </MobileCart>
 
         <Shop className=" d-flex flex-wrap ">
-          {/* <ItemCard />
-          <ItemCard />
-          <ItemCard />
-          <ItemCard />
-          <ItemCard />
-
-          <ItemCard />
-          <ItemCard />
-          <ItemCard />
-          <ItemCard />
-          <ItemCard /> */}
-          {items?.map((item, count) => {
-            return (
-              <ItemCard
-                name={item.name}
-                price={item.price}
-                key={count}
-                image={item.image}
-              />
-            );
-          })}
+          {loading ? (
+            <div
+              style={{ height: "85vh", width: "100%" }}
+              className=" d-flex justify-content-center align-items-center "
+            >
+              <Spinner />
+            </div>
+          ) : (
+            items?.map((item, count) => {
+              return (
+                <ItemCard
+                  name={item.name}
+                  price={item.price}
+                  key={count}
+                  image={item.image}
+                  clicked={() => {
+                    getItem(item._id);
+                  }}
+                  addto={() => {
+                    addingToCart(item);
+                  }}
+                />
+              );
+            })
+          )}
         </Shop>
       </Container>
     </Cartstyled>

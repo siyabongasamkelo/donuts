@@ -498,17 +498,6 @@ export const RegForm = () => {
           )}
         </MyButton>
       </form>
-
-      {/* <form onSubmit={formik.handleSubmit}>
-        <input
-          type="file"
-          name="image"
-          onhCange={(e) => {
-            formik.setFieldValue("image", e.target.files[0]);
-          }}
-        />
-        <button type="submit">Submit</button>
-      </form> */}
     </FormStyled>
   );
 };
@@ -521,10 +510,7 @@ export const Register = () => {
           <ToastContainer />
           <Header />
           <HeroDiv className=" d-flex">
-            <LeftDiv
-              // className=" d-flex flex-column justify-content-center align-items-center"
-              className=" d-none d-lg-flex flex-lg-column justify-content-lg-center align-items-lg-center"
-            >
+            <LeftDiv className=" d-none d-lg-flex flex-lg-column justify-content-lg-center align-items-lg-center">
               <div className="icons">
                 <Facebook />
                 <Whatsapp />

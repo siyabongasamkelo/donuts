@@ -26,6 +26,7 @@ app.use("/login", require("./routes/Login"));
 //item routes
 app.use("/add", require("./routes/addItem"));
 app.use("/get", require("./routes/getItems"));
+app.use("/get", require("./routes/getItem"));
 
 app.listen(process.env.PORT, () => {
   console.log(`running on port ${process.env.PORT}`);

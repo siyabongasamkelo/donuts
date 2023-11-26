@@ -9,6 +9,7 @@ export const ItemCardStyled = styled.div`
     height: 200px;
     margin-top: 5%;
     margin-left: 5%;
+    cursor: pointer;
     .container {
       width: 95%;
       height: 95%;
@@ -57,7 +58,6 @@ export const ItemCardStyled = styled.div`
       color: white;
       .pic {
         height: 80%;
-        /* background-color: red; */
         margin-top: -10%;
         img {
           height: 100px;
@@ -134,10 +134,10 @@ export const ItemCardStyled = styled.div`
     }
   }
   @media only screen and (min-width: 1200px) {
-    height: 320px;
+    height: 290px;
     width: 14%;
     margin-left: 5.3%;
-    margin-top: 2%;
+    margin-top: 3%;
     background-color: rgba(233, 87, 147, 0.4);
     background-color: #9fbb73;
     border-radius: 10px;
@@ -155,7 +155,7 @@ export const ItemCardStyled = styled.div`
         }
       }
       .text {
-        height: 20%;
+        margin-top: 0;
         div {
           p {
             margin-left: 5px;
@@ -167,7 +167,6 @@ export const ItemCardStyled = styled.div`
         }
       }
       .text2 {
-        margin-top: -10%;
         h2 {
           font-weight: 700;
           font-size: 20px;
@@ -192,14 +191,14 @@ export const Button = styled.button`
   }
 `;
 
-export const ItemCard = ({ name, image, price }) => {
+export const ItemCard = ({ name, image, price, clicked, addto }) => {
   return (
     <ItemCardStyled className="itemCard">
       <div className="container">
-        <div className="pic d-flex ">
+        <div className="pic d-flex " onClick={clicked}>
           <img src={image} alt="donut" />
         </div>
-        <div className="text d-flex justify-content-between">
+        <div className="text d-flex justify-content-between" onClick={clicked}>
           <p>{name}</p>
           <div className=" d-flex ">
             <StarFill />
@@ -208,7 +207,7 @@ export const ItemCard = ({ name, image, price }) => {
         </div>
         <div className="text2 d-flex justify-content-between align-items-center">
           <h2>R {price}</h2>
-          <Button>
+          <Button onClick={addto}>
             <BagFill />
           </Button>
         </div>
