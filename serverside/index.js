@@ -12,6 +12,7 @@ app.use(cors());
 app.use(fileupload({ useTempFiles: true }));
 
 //   mongodb connection
+// atlas connenction
 mongoose.set("strictQuery", true);
 mongoose.connect(process.env.MONGODBCONNECTION);
 const connection = mongoose.connection;
