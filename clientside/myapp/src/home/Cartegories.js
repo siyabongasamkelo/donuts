@@ -161,7 +161,8 @@ export const Cartegories = () => {
       });
   }, [dispatch, BaseUrl]);
 
-  console.log(items);
+  // console.log(items);
+  console.log(process.env.REACT_APP_ENVIRONMENT);
 
   const getItem = (id) => {
     navigate(`/item/${id}`);
