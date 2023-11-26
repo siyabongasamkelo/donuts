@@ -11,7 +11,6 @@ import { Sliders } from "react-bootstrap-icons";
 import { useEffect, useState } from "react";
 import { CartModal } from "../components/CartModal";
 import axios from "axios";
-// import { BaseUrl } from "../utils/BaseUrl";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Spinner } from "flowbite-react";
@@ -114,15 +113,11 @@ export const Cartegories = () => {
   const theCart = useSelector((state) => state?.cart?.value);
 
   let Url = "";
-
   if (process.env.REACT_APP_ENVIRONMENT === "DEVELOPMENT") {
     Url = "http://localhost:3001";
   } else {
     Url = "https://donuts-4c1f.onrender.com";
   }
-  // if (process.env.REACT_APP_ENVIRONMENT === "PRODUCTION") {
-  //   Url = "https://donuts-4c1f.onrender.com";
-  // }
   const BaseUrl = Url;
 
   const [openModal, setOpenModal] = useState(false);

@@ -7,11 +7,13 @@ import { ReviewCard } from "../components/ReviewCard";
 import { StarFill } from "react-bootstrap-icons";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { BaseUrl } from "../utils/BaseUrl";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Spinner } from "flowbite-react";
 import axios from "axios";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addToCart } from "../Features/Cart";
 
 export const SingleProdStyled = styled.div`
   width: 100vw;
@@ -379,7 +381,12 @@ export const MyButton = styled.button`
 `;
 
 const SingleProduct = () => {
+  const theCart = useSelector((state) => state?.cart?.value);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [item, setSetItme] = useState([]);
+  const [recommended, setRecommended] = useState(theCart);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const showToastMessage = (message) => {
@@ -393,6 +400,56 @@ const SingleProduct = () => {
       position: toast.POSITION.TOP_RIGHT,
     });
   };
+
+  let Url = "";
+  if (process.env.REACT_APP_ENVIRONMENT === "DEVELOPMENT") {
+    Url = "http://localhost:3001";
+  } else {
+    Url = "https://donuts-4c1f.onrender.com";
+  }
+  const BaseUrl = Url;
+
+  const getItem = (id) => {
+    navigate(`/item/${id}`);
+  };
+
+  const addingToCart = (item) => {
+    let exist = false;
+    for (let i = 0; i < theCart.length; i++) {
+      if (item._id === theCart[i].id) {
+        exist = true;
+      }
+    }
+    if (exist) {
+      showToastMessage("item already in cart");
+    } else {
+      dispatch(
+        addToCart({
+          item: {
+            id: item._id,
+            name: item.name,
+            brand: item.brand,
+            image: item.image,
+            price: item.price,
+            store: item.store,
+            quantity: 1,
+          },
+        })
+      );
+      showToastMessage("item added to cart");
+    }
+  };
+
+  useEffect(() => {
+    axios
+      .get(`${BaseUrl}/get/items`)
+      .then((res) => {
+        setRecommended(res.data);
+      })
+      .catch((err) => {
+        showToastMessage(err.message);
+      });
+  });
 
   useEffect(() => {
     setLoading(true);
@@ -409,7 +466,7 @@ const SingleProduct = () => {
         console.log(err);
         setLoading(false);
       });
-  }, [id]);
+  }, [id, BaseUrl]);
 
   return (
     <SingleProdStyled className=" d-flex justify-content-around ">
@@ -498,12 +555,29 @@ const SingleProduct = () => {
                     <h3>Recommended</h3>
                   </div>
                   <div className="d-flex flex-wrap">
-                    <ItemCard />
+                    {/* <ItemCard />
                     <ItemCard />
                     <ItemCard />
 
                     <ItemCard />
-                    <ItemCard />
+                    <ItemCard /> */}
+
+                    {recommended.slice(0, 5).map((item, count) => {
+                      return (
+                        <ItemCard
+                          name={item.name}
+                          price={item.price}
+                          key={count}
+                          image={item.image}
+                          clicked={() => {
+                            getItem(item._id);
+                          }}
+                          addto={() => {
+                            addingToCart(item);
+                          }}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
                 <div className="reviews d-flex flex-wrap">
