@@ -381,7 +381,7 @@ export const MyButton = styled.button`
 const SingleProduct = () => {
   const [item, setSetItme] = useState([]);
   const [loading, setLoading] = useState(false);
-
+  const { id } = useParams();
   const showToastMessage = (message) => {
     toast.error(message, {
       position: toast.POSITION.TOP_RIGHT,
@@ -409,8 +409,7 @@ const SingleProduct = () => {
         console.log(err);
         setLoading(false);
       });
-  }, []);
-  const { id } = useParams();
+  }, [id]);
 
   return (
     <SingleProdStyled className=" d-flex justify-content-around ">
