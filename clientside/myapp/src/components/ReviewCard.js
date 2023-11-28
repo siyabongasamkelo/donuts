@@ -46,7 +46,7 @@ export const Contaner = styled.div`
           height: 60px;
           height: 50px;
           aspect-ratio: 1 /1;
-          background-color: black;
+          /* background-color: black; */
           border-radius: 50%;
         }
         .details {
@@ -170,15 +170,23 @@ export const Contaner = styled.div`
   }
 `;
 
-export const ReviewCard = () => {
+export const ReviewCard = ({ writer, review, image }) => {
   return (
     <ReviewStyled className="reviewCard d-flex justify-content-center align-items-center">
       <Contaner>
         <div className="upper d-flex justify-content-between">
           <div className="user d-flex">
-            <div className="pic"></div>
+            <div
+              className="pic"
+              style={{
+                backgroundImage: `url(${image})`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            ></div>
             <div className="details">
-              <h5>Siya</h5>
+              {/* <h5>Siya</h5> */}
+              <h5>{writer}</h5>
               <p>Customer</p>
             </div>
           </div>
@@ -192,11 +200,12 @@ export const ReviewCard = () => {
         </div>
         <div className="text mt-3 ">
           <div>
-            <p>
+            {/* <p>
               Mhlathuze Donuts provides the best donuts in Mpangeni Area i like
               them a lot and their prices are highly reasonable they have been
               supplying my business for years and years now
-            </p>
+            </p> */}
+            <p>{review}</p>
           </div>
         </div>
       </Contaner>

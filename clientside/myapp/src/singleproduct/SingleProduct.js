@@ -15,7 +15,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../Features/Cart";
 import { LoginMordal } from "../components/LoginMordal";
-import { ExclamationTriangle } from "react-bootstrap-icons";
 
 export const SingleProdStyled = styled.div`
   width: 100vw;
@@ -97,7 +96,6 @@ export const LeftDiv = styled.div`
       display: flex;
       justify-content: center;
       img {
-        /* transform: scale(110%); */
         height: 500px;
         filter: drop-shadow(30px 5px 5px #666666);
       }
@@ -405,7 +403,6 @@ export const FormStyled = styled.div`
     margin-bottom: 20px;
     width: 90%;
     margin-left: 5%;
-    /* background-color: red; */
   }
 
   textarea {
@@ -413,7 +410,6 @@ export const FormStyled = styled.div`
     margin-left: 5%;
   }
 `;
-
 export const Container = styled.div`
   display: flex;
   justify-content: center;
@@ -520,10 +516,6 @@ const ReviewForm = ({ closeIts, productId }) => {
                       value={givenRating}
                       onClick={() => {
                         setRate(givenRating);
-                        // alert(
-                        //   `Are you sure you want to give
-                        //             ${givenRating} stars ?`
-                        // );
                       }}
                     />
                     <Rating>
@@ -560,6 +552,7 @@ const SingleProduct = () => {
   const [recommended, setRecommended] = useState(theCart);
   const [loading, setLoading] = useState(false);
   const [openForm, setOpenForm] = useState(false);
+  const [reviews, setReviews] = useState(false);
   const { id } = useParams();
 
   const showToastMessage = (message) => {
@@ -623,6 +616,18 @@ const SingleProduct = () => {
         showToastMessage(err.message);
       });
   }, [BaseUrl]);
+
+  useEffect(() => {
+    axios
+      .get(`${BaseUrl}/get/review/${id}`)
+      .then((res) => {
+        setReviews(res.data);
+        succToastMessage("reviews fetcing successful");
+      })
+      .catch((err) => {
+        showToastMessage(err.message);
+      });
+  }, [id, BaseUrl]);
 
   useEffect(() => {
     setLoading(true);
@@ -768,11 +773,16 @@ const SingleProduct = () => {
                     ) : (
                       ""
                     )}
-                    <ReviewCard />
-                    <ReviewCard />
-                    <ReviewCard />
-                    <ReviewCard />
-                    <ReviewCard />
+
+                    {reviews?.map((review) => {
+                      return (
+                        <ReviewCard
+                          writer={review.writerId.username}
+                          review={review.review}
+                          image={review.writerId.image}
+                        />
+                      );
+                    })}
                   </div>
                 </div>
               </RightDiv>

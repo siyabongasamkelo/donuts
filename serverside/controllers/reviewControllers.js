@@ -31,7 +31,8 @@ module.exports.getReview = async (req, res) => {
     res.status(400).json("please provide product Id");
   } else {
     try {
-      const reviews = await Reviews.where(id)
+      const reviews = await Reviews.where("productId")
+        .equals(id)
         .populate("writerId")
         .populate("productId");
       res.status(200).json(reviews);
