@@ -46,7 +46,6 @@ export const Contaner = styled.div`
           height: 60px;
           height: 50px;
           aspect-ratio: 1 /1;
-          /* background-color: black; */
           border-radius: 50%;
         }
         .details {

@@ -310,6 +310,9 @@ export const RightDiv = styled.div`
       h3 {
         font-size: 12px;
       }
+      button {
+        margin-top: 10%;
+      }
       margin-bottom: 30px;
     }
   }
@@ -336,7 +339,12 @@ export const RightDiv = styled.div`
       }
       div {
         .reviewCard {
-          margin-left: 2%;
+          margin-left: 1%;
+          margin-top: 2%;
+        }
+        button {
+          margin-top: 3%;
+          margin-left: 3%;
         }
       }
     }
@@ -352,6 +360,12 @@ export const RightDiv = styled.div`
     .reviews {
       div {
         .reviewCard {
+          width: 210%;
+          margin-top: 5%;
+          margin-left: 3%;
+        }
+        button {
+          margin-top: 15%;
           margin-left: 3%;
         }
       }
@@ -361,11 +375,11 @@ export const RightDiv = styled.div`
     .reviews {
       div {
         .reviewCard {
-          width: 50%;
+          width: 210%;
           margin-left: 3%;
         }
         button {
-          margin-top: 5%;
+          margin-top: 15%;
           margin-left: 3%;
         }
       }
@@ -763,26 +777,29 @@ const SingleProduct = () => {
                     >
                       Write a review
                     </MyButton>
-                    {openForm ? (
-                      <ReviewForm
-                        closeIts={() => {
-                          setOpenForm(false);
-                        }}
-                        productId={item[0]?._id}
-                      />
-                    ) : (
-                      ""
-                    )}
 
-                    {reviews?.map((review) => {
-                      return (
-                        <ReviewCard
-                          writer={review.writerId.username}
-                          review={review.review}
-                          image={review.writerId.image}
+                    <div className=" d-flex flex-wrap flex-lg-column">
+                      {openForm ? (
+                        <ReviewForm
+                          closeIts={() => {
+                            setOpenForm(false);
+                          }}
+                          productId={item[0]?._id}
                         />
-                      );
-                    })}
+                      ) : (
+                        ""
+                      )}
+
+                      {reviews?.map((review) => {
+                        return (
+                          <ReviewCard
+                            writer={review.writerId.username}
+                            review={review.review}
+                            image={review.writerId.image}
+                          />
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               </RightDiv>
