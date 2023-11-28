@@ -15,7 +15,6 @@ import sprinkles3 from "../images/sprinkles3.png";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { BaseUrl } from "../utils/BaseUrl";
 import { useFormik } from "formik";
 import { userSchema } from "../validations/UserValidation";
 import { Spinner } from "flowbite-react";

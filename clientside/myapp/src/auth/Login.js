@@ -15,10 +15,12 @@ import sprinkles3 from "../images/sprinkles3.png";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-// import { BaseUrl } from "../utils/BaseUrl";
 import { useFormik } from "formik";
 import { LoginSchema } from "../validations/UserValidation";
 import { Spinner } from "flowbite-react";
+import { getLoggedUser } from "../Features/Users";
+import { getLoggedStore } from "../Features/StoreReducer";
+import { useDispatch } from "react-redux";
 
 export const LoginPagestyled = styled.div`
   width: 100vw;
@@ -333,6 +335,7 @@ export const FormStyled = styled.div`
 export const RegForm = () => {
   const [loading, setLoading] = useState(false);
   const [isError, setIsErorr] = useState(false);
+  const dispatch = useDispatch();
 
   let Url = "";
 
@@ -371,16 +374,33 @@ export const RegForm = () => {
       const formData = new FormData();
       formData.append("email", email);
       formData.append("password", password);
-
       axios
+        // .post(`${BaseUrl}/login/user`, formData)
         .post(`${BaseUrl}/login/user`, formData)
         .then((res) => {
-          setLoading(false);
-          console.log(res);
           localStorage.setItem("token", res.data.token);
           succToastMessage("you're now logged in");
+
+          if (res.data.auther === "user") {
+            dispatch(
+              getLoggedUser({
+                jwt: res.data.token,
+                user: res.data.result,
+              })
+            );
+          }
+          if (res.data.auther === "store") {
+            dispatch(
+              getLoggedStore({
+                jwt: res.data.token,
+                store: res.data.result,
+              })
+            );
+          }
+          setLoading(false);
         })
         .catch((err) => {
+          console.log(err);
           setLoading(false);
           setIsErorr(true);
           err?.response?.data?.error?.map((error) => {

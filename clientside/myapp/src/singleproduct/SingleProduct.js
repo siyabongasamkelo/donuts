@@ -14,6 +14,8 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../Features/Cart";
+import { LoginMordal } from "../components/LoginMordal";
+import { ExclamationTriangle } from "react-bootstrap-icons";
 
 export const SingleProdStyled = styled.div`
   width: 100vw;
@@ -364,6 +366,10 @@ export const RightDiv = styled.div`
           width: 50%;
           margin-left: 3%;
         }
+        button {
+          margin-top: 5%;
+          margin-left: 3%;
+        }
       }
     }
   }
@@ -380,6 +386,171 @@ export const MyButton = styled.button`
   }
 `;
 
+// this is the css for the form
+export const FormStyled = styled.div`
+  width: 500px;
+  background-color: #9fbb73;
+  border-radius: 10px;
+  margin-top: 2%;
+  margin-left: 4.5%;
+  div {
+    label {
+      margin-top: 5%;
+      margin-bottom: 2%;
+      margin-left: 5%;
+    }
+  }
+
+  .action {
+    margin-bottom: 20px;
+    width: 90%;
+    margin-left: 5%;
+    /* background-color: red; */
+  }
+
+  textarea {
+    width: 90%;
+    margin-left: 5%;
+  }
+`;
+
+export const Container = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  margin-left: -10px;
+  margin-top: -5%;
+`;
+export const Radio = styled.input`
+  display: none;
+`;
+export const Rating = styled.div`
+  cursor: pointer;
+`;
+
+const ReviewForm = ({ closeIts, productId }) => {
+  const theUser = useSelector((state) => state?.user?.value?.user[0]?._id);
+  const isLogged = useSelector((state) => state?.user?.value.isLogged);
+
+  const [closeIt, setCloseIt] = useState(true);
+
+  const [openModal, setOpenModal] = useState(false);
+
+  const [rate, setRate] = useState(0);
+  const [review, setReview] = useState("");
+
+  const showToastMessage = (message) => {
+    toast.error(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  const succToastMessage = (message) => {
+    toast.success(message, {
+      position: toast.POSITION.TOP_RIGHT,
+    });
+  };
+
+  let Url = "";
+  if (process.env.REACT_APP_ENVIRONMENT === "DEVELOPMENT") {
+    Url = "http://localhost:3001";
+  } else {
+    Url = "https://donuts-4c1f.onrender.com";
+  }
+  const BaseUrl = Url;
+
+  const addReview = (e) => {
+    e.preventDefault();
+    if (isLogged) {
+      const formData = new FormData();
+      formData.append("rating", rate);
+      formData.append("review", review);
+      formData.append("productId", productId);
+      formData.append("writerId", theUser);
+
+      axios
+        .post(`${BaseUrl}/add/review`, formData)
+        .then((res) => {
+          succToastMessage(res.data);
+          setCloseIt(false);
+        })
+        .catch((err) => {
+          showToastMessage(err.message);
+          console.log(err);
+        });
+    } else {
+      setOpenModal(!openModal);
+    }
+  };
+
+  return (
+    <FormStyled>
+      <form>
+        <LoginMordal
+          openModal={openModal}
+          onCloseModal={() => {
+            setOpenModal(false);
+          }}
+        />
+        <div className="mb-3">
+          <label for="exampleInputEmail1" className="form-label">
+            Review
+          </label>
+          <textarea
+            className="form-control"
+            onChange={(e) => {
+              setReview(e.target.value);
+            }}
+          ></textarea>
+          <div id="emailHelp" className="form-text text-danger"></div>
+        </div>
+        <div className="mb-1">
+          <label for="exampleInputEmail1" className="form-label">
+            Review
+          </label>
+          <div className="">
+            <Container>
+              {[...Array(5)].map((item, index) => {
+                const givenRating = index + 1;
+                return (
+                  <label>
+                    <Radio
+                      type="radio"
+                      value={givenRating}
+                      onClick={() => {
+                        setRate(givenRating);
+                        // alert(
+                        //   `Are you sure you want to give
+                        //             ${givenRating} stars ?`
+                        // );
+                      }}
+                    />
+                    <Rating>
+                      <StarFill
+                        color={
+                          givenRating < rate || givenRating === rate
+                            ? "white"
+                            : "rgb(192,192,192)"
+                        }
+                      />
+                    </Rating>
+                  </label>
+                );
+              })}
+            </Container>
+          </div>
+          <div id="emailHelp" className="form-text text-danger"></div>
+        </div>
+        <div className="action d-flex justify-content-between">
+          <MyButton onClick={addReview}>Add review</MyButton>
+          <MyButton onClick={closeIt}>Cancel</MyButton>
+        </div>
+      </form>
+    </FormStyled>
+  );
+};
+
 const SingleProduct = () => {
   const theCart = useSelector((state) => state?.cart?.value);
   const navigate = useNavigate();
@@ -388,7 +559,9 @@ const SingleProduct = () => {
   const [item, setSetItme] = useState([]);
   const [recommended, setRecommended] = useState(theCart);
   const [loading, setLoading] = useState(false);
+  const [openForm, setOpenForm] = useState(false);
   const { id } = useParams();
+
   const showToastMessage = (message) => {
     toast.error(message, {
       position: toast.POSITION.TOP_RIGHT,
@@ -449,7 +622,7 @@ const SingleProduct = () => {
       .catch((err) => {
         showToastMessage(err.message);
       });
-  });
+  }, [BaseUrl]);
 
   useEffect(() => {
     setLoading(true);
@@ -555,13 +728,6 @@ const SingleProduct = () => {
                     <h3>Recommended</h3>
                   </div>
                   <div className="d-flex flex-wrap">
-                    {/* <ItemCard />
-                    <ItemCard />
-                    <ItemCard />
-
-                    <ItemCard />
-                    <ItemCard /> */}
-
                     {recommended.slice(0, 5).map((item, count) => {
                       return (
                         <ItemCard
@@ -585,6 +751,23 @@ const SingleProduct = () => {
                     <h3>reviews</h3>
                   </div>
                   <div className=" d-flex flex-wrap flex-lg-column">
+                    <MyButton
+                      onClick={() => {
+                        setOpenForm(true);
+                      }}
+                    >
+                      Write a review
+                    </MyButton>
+                    {openForm ? (
+                      <ReviewForm
+                        closeIts={() => {
+                          setOpenForm(false);
+                        }}
+                        productId={item[0]?._id}
+                      />
+                    ) : (
+                      ""
+                    )}
                     <ReviewCard />
                     <ReviewCard />
                     <ReviewCard />

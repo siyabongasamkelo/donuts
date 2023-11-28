@@ -29,6 +29,10 @@ app.use("/add", require("./routes/addItem"));
 app.use("/get", require("./routes/getItems"));
 app.use("/get", require("./routes/getItem"));
 
+//review routes
+app.use("/add", require("./routes/addReview"));
+app.use("/get", require("./routes/getReview"));
+
 app.listen(process.env.PORT, () => {
   console.log(`running on port ${process.env.PORT}`);
 });
