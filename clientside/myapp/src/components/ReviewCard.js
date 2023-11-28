@@ -184,7 +184,6 @@ export const ReviewCard = ({ writer, review, image }) => {
               }}
             ></div>
             <div className="details">
-              {/* <h5>Siya</h5> */}
               <h5>{writer}</h5>
               <p>Customer</p>
             </div>
@@ -199,11 +198,6 @@ export const ReviewCard = ({ writer, review, image }) => {
         </div>
         <div className="text mt-3 ">
           <div>
-            {/* <p>
-              Mhlathuze Donuts provides the best donuts in Mpangeni Area i like
-              them a lot and their prices are highly reasonable they have been
-              supplying my business for years and years now
-            </p> */}
             <p>{review}</p>
           </div>
         </div>

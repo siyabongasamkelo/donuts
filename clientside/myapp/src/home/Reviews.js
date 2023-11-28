@@ -67,7 +67,10 @@ export const Container = styled.div`
 
 export const Reviews = () => {
   return (
-    <ReviewStyled className=" d-flex justify-content-center align-items-center">
+    <ReviewStyled
+      className=" d-flex justify-content-center align-items-center"
+      id="review"
+    >
       <Container>
         <div className="header">
           <h1>Reviews</h1>

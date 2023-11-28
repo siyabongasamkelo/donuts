@@ -4,11 +4,6 @@ import { HiArrowNarrowRight } from "react-icons/hi";
 import { BarChart, Instagram, Shop } from "react-bootstrap-icons";
 
 export const TimeLineStyled = styled.div`
-  /* width: 100vw;
-  @media (max-width: 480px) {
-    margin-bottom: 50px;
-  } */
-
   @media only screen and (max-width: 600px) {
     width: 100vw;
     margin-bottom: 50px;
@@ -48,7 +43,10 @@ export const TimelineDIv = styled.div`
 
 export const TimeLine = () => {
   return (
-    <TimeLineStyled className=" d-flex justify-content-center align-items-center">
+    <TimeLineStyled
+      className=" d-flex justify-content-center align-items-center"
+      id="timeline"
+    >
       <Contaner className=" d-flex flex-column align-items-center">
         <div className="header">
           <h1>Our Time Line</h1>

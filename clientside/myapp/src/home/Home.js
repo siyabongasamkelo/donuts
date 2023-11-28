@@ -12,7 +12,7 @@ import donut from "../images/donut.png";
 import sprinkles from "../images/sprinkles.png";
 import sprinkles2 from "../images/sprinkles2.png";
 import sprinkles3 from "../images/sprinkles3.png";
-// import { motion } from "framer-motion";
+import { HashLink as Link } from "react-router-hash-link";
 
 export const HomePagestyled = styled.div`
   width: 100vw;
@@ -341,7 +341,9 @@ export const Home = () => {
                 <img src={donut} alt="donut" />
               </div>
               <div className="action">
-                <MyButton>Buy</MyButton>
+                <Link to="#shop">
+                  <MyButton>Buy</MyButton>
+                </Link>
               </div>
             </Middle>
             <RightDiv>

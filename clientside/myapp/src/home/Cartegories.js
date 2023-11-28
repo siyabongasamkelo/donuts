@@ -191,7 +191,7 @@ export const Cartegories = () => {
   };
 
   return (
-    <Cartstyled className=" d-flex justify-content-center">
+    <Cartstyled className=" d-flex justify-content-center" id="shop">
       <CartModal
         openModal={openModal}
         onCloseModal={() => {

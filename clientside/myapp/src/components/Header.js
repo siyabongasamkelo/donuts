@@ -1,5 +1,5 @@
 import donut from "../images/donut.png";
-import { Link } from "react-router-dom";
+// import { Link as Links }  from "react-router-dom";
 import {
   Person,
   Bag,
@@ -17,6 +17,7 @@ import { useState } from "react";
 import sprinkles from "../images/sprinkles.png";
 import sprinkles2 from "../images/sprinkles2.png";
 import { LoginMordal } from "./LoginMordal";
+import { HashLink as Link } from "react-router-hash-link";
 
 export const HeaderStyled = styled.header`
   @media only screen and (max-width: 600px) {
@@ -143,16 +144,16 @@ const Header = () => {
       <NavStyled className=" d-none d-lg-block">
         <ul className=" d-flex">
           <li>
-            <Link to="123">About</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="123">Services</Link>
+            <Link to="#shop">Shop</Link>
           </li>
           <li>
-            <Link to="123">Pricing</Link>
+            <Link to="#review">Review</Link>
           </li>
           <li>
-            <Link to="123">Contact</Link>
+            <Link to="#timeline">Our Timeline</Link>
           </li>
         </ul>
       </NavStyled>
