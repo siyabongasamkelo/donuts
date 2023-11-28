@@ -552,7 +552,7 @@ const SingleProduct = () => {
   const [recommended, setRecommended] = useState(theCart);
   const [loading, setLoading] = useState(false);
   const [openForm, setOpenForm] = useState(false);
-  const [reviews, setReviews] = useState(false);
+  const [reviews, setReviews] = useState([]);
   const { id } = useParams();
 
   const showToastMessage = (message) => {
