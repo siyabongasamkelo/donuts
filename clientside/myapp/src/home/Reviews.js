@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { ReviewCard } from "../components/ReviewCard";
+import propic5 from "../images/propic5.jpg";
 
 export const ReviewStyled = styled.div`
   width: 100%;
@@ -73,12 +74,53 @@ export const Reviews = () => {
           <p>This is what our clients say about us</p>
         </div>
         <div className="reviews mt-4 d-flex flex-column flex-md-row justify-content-md-between flex-md-wrap">
-          <ReviewCard />
-          <ReviewCard />
-          <ReviewCard />
-          <ReviewCard />
-          <ReviewCard />
-          <ReviewCard />
+          <ReviewCard
+            writer="Siya Mazibuko"
+            review="Mhlathuze Donuts provides the best donuts in Mpangeni Area i like
+              them a lot and their prices are highly reasonable they have been
+              supplying my business for years and years now"
+            image={propic5}
+          />
+
+          <ReviewCard
+            writer="Siya Mazibuko"
+            review="Mhlathuze Donuts provides the best donuts in Mpangeni Area i like
+              them a lot and their prices are highly reasonable they have been
+              supplying my business for years and years now"
+            image={propic5}
+          />
+
+          <ReviewCard
+            writer="Siya Mazibuko"
+            review="Mhlathuze Donuts provides the best donuts in Mpangeni Area i like
+              them a lot and their prices are highly reasonable they have been
+              supplying my business for years and years now"
+            image={propic5}
+          />
+
+          <ReviewCard
+            writer="Siya Mazibuko"
+            review="Mhlathuze Donuts provides the best donuts in Mpangeni Area i like
+              them a lot and their prices are highly reasonable they have been
+              supplying my business for years and years now"
+            image={propic5}
+          />
+
+          <ReviewCard
+            writer="Siya Mazibuko"
+            review="Mhlathuze Donuts provides the best donuts in Mpangeni Area i like
+              them a lot and their prices are highly reasonable they have been
+              supplying my business for years and years now"
+            image={propic5}
+          />
+
+          <ReviewCard
+            writer="Siya Mazibuko"
+            review="Mhlathuze Donuts provides the best donuts in Mpangeni Area i like
+              them a lot and their prices are highly reasonable they have been
+              supplying my business for years and years now"
+            image={propic5}
+          />
         </div>
       </Container>
     </ReviewStyled>
