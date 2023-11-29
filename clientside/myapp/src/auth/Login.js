@@ -375,7 +375,6 @@ export const RegForm = () => {
       formData.append("email", email);
       formData.append("password", password);
       axios
-        // .post(`${BaseUrl}/login/user`, formData)
         .post(`${BaseUrl}/login/user`, formData)
         .then((res) => {
           localStorage.setItem("token", res.data.token);

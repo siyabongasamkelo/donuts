@@ -388,7 +388,6 @@ export const MyButton = styled.button`
     color: white;
   }
 `;
-
 // this is the css for the form
 export const FormStyled = styled.div`
   width: 500px;

@@ -9,14 +9,18 @@ import {
   Whatsapp,
   Github,
   X,
+  DoorClosed,
 } from "react-bootstrap-icons";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import sprinkles from "../images/sprinkles.png";
 import sprinkles2 from "../images/sprinkles2.png";
 import { LoginMordal } from "./LoginMordal";
 import { HashLink as Link } from "react-router-hash-link";
+import { useSelector } from "react-redux";
+
+import LogOutMordal from "../components/LogOutMordal";
 
 export const HeaderStyled = styled.header`
   @media only screen and (max-width: 600px) {
@@ -128,10 +132,24 @@ export const MobileHeader = styled.div`
 `;
 
 const Header = () => {
+  const isLogged = useSelector((state) => state?.user?.value.isLogged);
   const [closeIt, setCloseIt] = useState(true);
   const [display, setDisplay] = useState("block");
+  const [cartTotal, setCartTotal] = useState(0);
 
+  const [logoutMordal, setLogoutMordal] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const theCart = useSelector((state) => state.cart.value);
+
+  useEffect(() => {
+    let totalItem = 0;
+    if (theCart.length !== 0) {
+      for (let i = 0; i < theCart.length; i++) {
+        totalItem = totalItem + theCart[i].quantity;
+      }
+      setCartTotal(totalItem);
+    }
+  }, [theCart, cartTotal]);
 
   return (
     <HeaderStyled className=" d-flex justify-content-between align-items-center">
@@ -156,15 +174,48 @@ const Header = () => {
           </li>
         </ul>
       </NavStyled>
-
+      <LogOutMordal
+        openModal={logoutMordal}
+        closeIt={() => {
+          setLogoutMordal(false);
+        }}
+      />
       <div className="icons d-flex">
-        <Person
-          onClick={() => {
-            setOpenModal(!openModal);
-          }}
-        />
+        {isLogged ? (
+          <DoorClosed
+            onClick={() => {
+              setLogoutMordal(true);
+            }}
+          />
+        ) : (
+          <Person
+            onClick={() => {
+              setOpenModal(!openModal);
+            }}
+          />
+        )}
         <Link to="/cart">
-          <Bag />
+          <div className=" d-flex align-items-center">
+            <Bag />
+            {cartTotal > 0 ? (
+              <p
+                className=" d-flex justify-content-center align-items-center"
+                style={{
+                  color: "white",
+                  marginLeft: "10px",
+                  marginTop: "-20px",
+                  height: "30px",
+                  width: "30px",
+                  backgroundColor: "red",
+                  borderRadius: "50%",
+                }}
+              >
+                {cartTotal}
+              </p>
+            ) : (
+              ""
+            )}
+          </div>
         </Link>
       </div>
 
@@ -261,7 +312,26 @@ const Header = () => {
                 duration: 0.8,
               }}
             >
-              <label>Login</label> <Person />
+              <label
+                onClick={() => {
+                  setLogoutMordal(true);
+                }}
+              >
+                {isLogged ? "Log out" : "Log in"}
+              </label>
+              {isLogged ? (
+                <DoorClosed
+                  onClick={() => {
+                    setLogoutMordal(true);
+                  }}
+                />
+              ) : (
+                <Person
+                  onClick={() => {
+                    setOpenModal(!openModal);
+                  }}
+                />
+              )}
             </motion.li>
             <motion.li
               className=" d-flex justify-content-center align-items-center "
@@ -272,7 +342,28 @@ const Header = () => {
                 duration: 0.8,
               }}
             >
-              <label>Cart</label> <Bag />
+              <label>Cart</label>{" "}
+              <div className=" d-flex align-items-center">
+                <Bag />
+                {cartTotal > 0 ? (
+                  <p
+                    className=" d-flex justify-content-center align-items-center"
+                    style={{
+                      color: "white",
+                      marginLeft: "10px",
+                      marginTop: "-20px",
+                      height: "30px",
+                      width: "30px",
+                      backgroundColor: "red",
+                      borderRadius: "50%",
+                    }}
+                  >
+                    {cartTotal}
+                  </p>
+                ) : (
+                  ""
+                )}
+              </div>
             </motion.li>
             <motion.li
               className=" d-flex justify-content-center align-items-center "
