@@ -43,9 +43,8 @@ export const Contaner = styled.div`
       padding-top: 15px;
       .user {
         .pic {
-          height: 60px;
           height: 50px;
-          aspect-ratio: 1 /1;
+          aspect-ratio: 1 / 1;
           border-radius: 50%;
         }
         .details {
@@ -172,7 +171,7 @@ export const Contaner = styled.div`
 export const ReviewCard = ({ writer, review, image }) => {
   return (
     <ReviewStyled className="reviewCard d-flex justify-content-center align-items-center">
-      <Contaner>
+      <Contaner className="container">
         <div className="upper d-flex justify-content-between">
           <div className="user d-flex">
             <div

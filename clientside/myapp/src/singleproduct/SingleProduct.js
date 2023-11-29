@@ -306,14 +306,13 @@ export const RightDiv = styled.div`
       }
     }
     .reviews {
-      margin-top: 10%;
-      h3 {
-        font-size: 12px;
+      margin-top: 8%;
+      padding-bottom: 30px;
+      div {
+        button {
+          margin-top: 5%;
+        }
       }
-      button {
-        margin-top: 10%;
-      }
-      margin-bottom: 30px;
     }
   }
   @media only screen and (min-width: 768px) {
@@ -341,6 +340,7 @@ export const RightDiv = styled.div`
         .reviewCard {
           margin-left: 1%;
           margin-top: 2%;
+          width: 100%;
         }
         button {
           margin-top: 3%;
@@ -359,11 +359,6 @@ export const RightDiv = styled.div`
     }
     .reviews {
       div {
-        .reviewCard {
-          width: 210%;
-          margin-top: 5%;
-          margin-left: 3%;
-        }
         button {
           margin-top: 15%;
           margin-left: 3%;
@@ -374,10 +369,6 @@ export const RightDiv = styled.div`
   @media only screen and (min-width: 1200px) {
     .reviews {
       div {
-        .reviewCard {
-          width: 210%;
-          margin-left: 3%;
-        }
         button {
           margin-top: 15%;
           margin-left: 3%;
@@ -423,6 +414,10 @@ export const FormStyled = styled.div`
     width: 90%;
     margin-left: 5%;
   }
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+    margin-left: -1%;
+  }
 `;
 export const Container = styled.div`
   display: flex;
@@ -443,10 +438,7 @@ const ReviewForm = ({ closeIts, productId }) => {
   const theUser = useSelector((state) => state?.user?.value?.user[0]?._id);
   const isLogged = useSelector((state) => state?.user?.value.isLogged);
 
-  const [closeIt, setCloseIt] = useState(true);
-
   const [openModal, setOpenModal] = useState(false);
-
   const [rate, setRate] = useState(0);
   const [review, setReview] = useState("");
 
@@ -483,7 +475,7 @@ const ReviewForm = ({ closeIts, productId }) => {
         .post(`${BaseUrl}/add/review`, formData)
         .then((res) => {
           succToastMessage(res.data);
-          setCloseIt(false);
+          closeIts();
         })
         .catch((err) => {
           showToastMessage(err.message);
@@ -550,7 +542,7 @@ const ReviewForm = ({ closeIts, productId }) => {
         </div>
         <div className="action d-flex justify-content-between">
           <MyButton onClick={addReview}>Add review</MyButton>
-          <MyButton onClick={closeIt}>Cancel</MyButton>
+          <MyButton onClick={closeIts}>Cancel</MyButton>
         </div>
       </form>
     </FormStyled>

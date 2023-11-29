@@ -171,7 +171,7 @@ export const Cartegories = () => {
       }
     }
     if (exist) {
-      showToastMessage("item already in cart");
+      succToastMessage("item already in cart");
     } else {
       dispatch(
         addToCart({
@@ -186,7 +186,7 @@ export const Cartegories = () => {
           },
         })
       );
-      showToastMessage("item added to cart");
+      succToastMessage("item added to cart");
     }
   };
 
