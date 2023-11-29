@@ -1,5 +1,5 @@
 import donut from "../images/donut.png";
-// import { Link as Links }  from "react-router-dom";
+import { Link as Links } from "react-router-dom";
 import {
   Person,
   Bag,
@@ -154,6 +154,9 @@ const Header = () => {
           </li>
           <li>
             <Link to="#timeline">Our Timeline</Link>
+          </li>
+          <li>
+            <Links to="/contact">Contact</Links>
           </li>
         </ul>
       </NavStyled>
